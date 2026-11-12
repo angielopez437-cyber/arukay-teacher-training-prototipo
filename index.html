@@ -89,6 +89,20 @@ main{padding:28px 0 60px}
 .steps li{display:flex;gap:12px;align-items:flex-start}
 .steps li span{flex:none;width:28px;height:28px;border-radius:50%;background:var(--cyl);color:var(--x06759c);font-weight:700;display:flex;align-items:center;justify-content:center;font-size:14px}
 
+.pod{margin-top:22px;background:var(--paper);border:1px solid var(--ln);border-radius:var(--r);padding:22px}
+.pod-h{display:flex;gap:18px;align-items:center;margin-bottom:14px}
+.pod-h h3{font-size:22px;margin:6px 0 4px}
+.pod-art{flex:none;width:84px;height:84px;border-radius:16px;background:var(--nv);display:flex;align-items:center;justify-content:center;gap:5px}
+.pod-art span{width:6px;border-radius:3px;background:var(--cy)}
+.pod-art span:nth-child(1){height:22px}.pod-art span:nth-child(2){height:40px;background:var(--bl)}.pod-art span:nth-child(3){height:56px;background:var(--co)}.pod-art span:nth-child(4){height:36px;background:var(--gr)}.pod-art span:nth-child(5){height:18px;background:var(--am)}
+#podaudio{width:100%}
+.trans{margin-top:12px}
+.trans summary{cursor:pointer;font-weight:700;color:var(--bl)}
+#podtr{display:grid;gap:6px;margin-top:10px;max-height:320px;overflow:auto}
+.tl{display:grid;grid-template-columns:70px minmax(0,1fr);gap:10px;text-align:left;border:0;background:none;border-radius:8px;padding:8px 10px;font-size:15px}
+.tl b{color:var(--bl)}.tl.e b{color:var(--co)}
+.tl:hover{background:var(--bg)}
+.tl.on{background:var(--bll)}
 /* conceptos */
 .units{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px;margin-bottom:22px}
 .unit{background:var(--paper);border:1.5px solid var(--ln);border-radius:12px;padding:12px 14px;text-align:left}
@@ -236,6 +250,11 @@ textarea{width:100%;min-height:150px;border:1.5px solid var(--ln);border-radius:
 .phys{margin-top:14px;border:2px dashed var(--gr);border-radius:var(--r);background:var(--paper);padding:18px 20px}
 .phys-h{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:10px}.phys-h h3{font-size:19px}
 .mats{margin:6px 0 0;padding-left:18px;font-size:14px}
+.tiers{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.tier{border:1px solid var(--ln);border-radius:12px;padding:14px}
+.tier .small{margin:8px 0 0}
+.cost{margin:10px 0 0;font-family:var(--fd);font-weight:700;color:var(--nv)}
+@media (max-width:900px){.tiers{grid-template-columns:minmax(0,1fr)}}
 .switchrow{display:flex;gap:10px;margin-bottom:16px;flex-wrap:wrap}
 /* quiz */
 .q{display:none}.q.on{display:block}
@@ -321,6 +340,20 @@ footer{border-top:1px solid var(--ln);padding:18px 0 30px;color:var(--mu);font-s
         <li><span>3</span><div><b>Proyecto STEAM y Evaluación:</b> llevas lo aprendido a tu aula y recibes tu certificado.</div></li>
       </ol>
     </div>
+  </div>
+
+  <div class="pod">
+    <div class="pod-h">
+      <div class="pod-art" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
+      <div>
+        <span class="pill">Podcast Arukay, episodio 1</span>
+        <h3>¿Por qué aprender a programar hoy?</h3>
+        <p class="small muted" style="margin:0">Ana conversa con Andrés, ingeniero de software y docente de colegio, sobre un caso real de su clase.</p>
+      </div>
+    </div>
+    <audio id="podaudio" controls preload="metadata" src="podcast.m4a"></audio>
+    <details class="trans"><summary>Ver la transcripción</summary><div id="podtr"><button class="tl" type="button" data-t="0.0"><b>Ana</b><span>Bienvenidos a este podcast de Arukay, donde hablamos de por qué aprender a programar hoy es tan importante. Para esto invitamos a Andrés, ingeniero de software y docente de programación en un colegio. Andrés, bienvenido.</span></button><button class="tl e" type="button" data-t="14.69"><b>Andrés</b><span>Gracias, Ana. Feliz de estar aquí.</span></button><button class="tl" type="button" data-t="18.08"><b>Ana</b><span>Empecemos con una pregunta directa: ¿por qué un estudiante de colegio debería aprender a programar?</span></button><button class="tl e" type="button" data-t="24.58"><b>Andrés</b><span>Porque programar es aprender a resolver problemas paso a paso. Te cuento un caso de mi clase. Una estudiante tenía que hacer veinte etiquetas para la feria del colegio, con el nombre y el precio de cada producto. Pensaba hacerlas una por una.</span></button><button class="tl" type="button" data-t="38.58"><b>Ana</b><span>¿Y qué pasó?</span></button><button class="tl e" type="button" data-t="39.82"><b>Andrés</b><span>Le pregunté: ¿qué se repite en todas las etiquetas? Descubrió que solo cambiaban el nombre y el precio. Con un ciclo de pocas líneas en Python hizo las veinte en segundos.</span></button><button class="tl" type="button" data-t="50.02"><b>Ana</b><span>Esa es justamente la misión de este curso.</span></button><button class="tl e" type="button" data-t="53.26"><b>Andrés</b><span>Exacto. Y lo importante no fue el código, fue la pregunta. Ella pasó de hacer la tarea a pensar cómo automatizarla.</span></button><button class="tl" type="button" data-t="60.99"><b>Ana</b><span>Hoy la inteligencia artificial también escribe código. ¿Sigue valiendo la pena aprender a programar?</span></button><button class="tl e" type="button" data-t="67.6"><b>Andrés</b><span>Más que nunca. La inteligencia artificial te da una respuesta, pero tú tienes que saber qué preguntar y si la respuesta está bien. Eso solo lo logra quien entiende cómo piensa un programa.</span></button><button class="tl" type="button" data-t="78.64"><b>Ana</b><span>¿Y qué papel tiene el docente en todo esto?</span></button><button class="tl e" type="button" data-t="81.74"><b>Andrés</b><span>El más importante. No necesitas saberlo todo. Necesitas hacer las preguntas correctas, como la de las etiquetas, y acompañar el error sin dar la respuesta.</span></button><button class="tl" type="button" data-t="91.43"><b>Ana</b><span>Un consejo para quien empieza este curso.</span></button><button class="tl e" type="button" data-t="94.5"><b>Andrés</b><span>Equivócate tú primero. Resuelve cada reto antes que tus estudiantes: donde te trabes tú, se trabarán ellos, y ya sabrás qué preguntarles.</span></button><button class="tl" type="button" data-t="103.67"><b>Ana</b><span>Gracias, Andrés. Y a ustedes, docentes, bienvenidos al Teacher Training en Python 1. ¡Empecemos!</span></button></div></details>
+    <p class="small muted" style="margin:10px 0 0">Muestra con voces sintéticas y personajes de ejemplo; la versión final se graba con voces reales.</p>
   </div>
 </section>
 
@@ -603,10 +636,10 @@ formatted_name = full_name.replace(<span class="s">" "</span>, <span class="s">"
       </div>
     </div>
     <div class="phys">
-      <div class="phys-h"><span class="pill gr">Versión física con Arduino</span><h3>Carné con tarjeta inteligente</h3></div>
-      <div class="g2">
-        <p class="small" style="margin:0">Cada carné lleva una tarjeta RFID. Al acercarla al lector, el Arduino avisa al programa de Python, que busca el nombre, lo formatea con los métodos de la sesión 10 y lo muestra en una pantalla LCD. Así funciona el control de entrada de un colegio o una biblioteca.</p>
-        <div><b class="small">Materiales por equipo</b><ul class="mats"><li>Arduino UNO con cable USB</li><li>Lector RFID RC522 y tarjetas</li><li>Pantalla LCD 16x2 con módulo I2C</li><li>Cables de conexión</li></ul></div>
+      <div class="phys-h"><span class="pill gr">Llévalo al mundo real</span><h3>Carnés del curso</h3></div>
+      <div class="tiers">
+        <div class="tier"><span class="pill gr">Sin costo</span><p class="small">Cada estudiante imprime o escribe en cartulina el usuario que generó su programa y diseña su carné.</p></div>
+        <div class="tier"><span class="pill bl">Kit por equipo</span><p class="small">Con una Raspberry Pi Pico, que se programa directamente en Python, un botón recorre los nombres de la clase y una pantalla muestra el usuario de cada uno.</p><ul class="mats"><li>Raspberry Pi Pico H</li><li>Pantalla LCD 16x2 con I2C</li><li>Pulsador</li><li>Mini protoboard y cables</li></ul><p class="cost">Aprox. $65.700 por equipo</p></div>
       </div>
     </div>
   </div>
@@ -637,21 +670,21 @@ formatted_name = full_name.replace(<span class="s">" "</span>, <span class="s">"
       </div>
     </div>
     <div class="phys">
-      <div class="phys-h"><span class="pill gr">Versión física con Arduino</span><h3>Contador de botellas recicladas</h3></div>
-      <div class="g2">
-        <p class="small" style="margin:0">En lugar de escribir los datos, un sensor infrarrojo en la boca del contenedor detecta cada botella y el Arduino la envía al programa. Un botón cierra el registro, igual que el número negativo del reto: el mismo ciclo while con break, ahora con datos reales del colegio.</p>
-        <div><b class="small">Materiales por equipo</b><ul class="mats"><li>Arduino UNO con cable USB</li><li>Sensor infrarrojo de obstáculos</li><li>Pulsador y LED</li><li>Caja de cartón como contenedor</li></ul></div>
+      <div class="phys-h"><span class="pill gr">Llévalo al mundo real</span><h3>Contador de botellas recicladas</h3></div>
+      <div class="tiers">
+        <div class="tier"><span class="pill gr">Sin costo</span><p class="small">Durante una semana el grupo cuenta en papel las botellas recicladas y las ingresa al programa; un número negativo cierra el registro.</p></div>
+        <div class="tier"><span class="pill bl">Kit por equipo</span><p class="small">Un sensor infrarrojo en la boca del contenedor cuenta cada botella y un botón cierra el registro: el mismo while con break, en una Raspberry Pi Pico.</p><ul class="mats"><li>Raspberry Pi Pico H</li><li>Sensor infrarrojo de obstáculos</li><li>Pulsador y LED</li><li>Mini protoboard y cables</li></ul><p class="cost">Aprox. $51.810 por equipo</p></div>
       </div>
     </div>
   </div>
   <div class="card" style="margin-top:18px;display:flex;gap:16px;align-items:center;flex-wrap:wrap">
-    <div style="flex:1;min-width:260px"><h3 style="font-size:20px;margin-bottom:4px">Del código al mundo real</h3><p class="small muted" style="margin:0">Un proyecto STEAM se toca: con una placa Arduino y componentes electrónicos, tus estudiantes ven su programa funcionando fuera de la pantalla. Si aún no tienes el kit, empieza con el simulador.</p></div>
+    <div style="flex:1;min-width:260px"><h3 style="font-size:20px;margin-bottom:4px">Del código al mundo real</h3><p class="small muted" style="margin:0">Un proyecto STEAM se toca. Los materiales los compran tus estudiantes, por eso cada proyecto tiene una versión sin costo y una con un kit económico por equipo. Para Python recomendamos la Raspberry Pi Pico: es la placa más económica y se programa en Python.</p></div>
     <a class="btn ghost" href="https://angielopez437-cyber.github.io/arukay-proyecto-steam/" target="_blank" rel="noopener">Ver un proyecto físico completo</a>
   </div>
   <h3 style="font-size:22px;margin:26px 0 12px">Cómo lo llevas a tu aula</h3>
   <div class="flow">
     <div class="card top-cy"><div class="num" style="background:var(--cy)">1</div><b>Parte de un reto</b><span class="small muted">Elige el reto de la sesión 10 o de la sesión 15.</span></div>
-    <div class="card top-bl"><div class="num" style="background:var(--bl)">2</div><b>Agrega algo nuevo</b><span class="small muted">Un dato real del colegio y una versión física con Arduino que tus estudiantes puedan mostrar.</span></div>
+    <div class="card top-bl"><div class="num" style="background:var(--bl)">2</div><b>Agrega algo nuevo</b><span class="small muted">Un dato real del colegio y una versión física, con cartón o con un kit económico.</span></div>
     <div class="card top-co"><div class="num" style="background:var(--co)">3</div><b>Planéalo con Tutor Kay</b><span class="small muted">Pídele el plan de clases, los materiales y las preguntas para guiar.</span></div>
     <div class="card top-gr"><div class="num" style="background:var(--gr)">4</div><b>Desarróllalo en clase</b><span class="small muted">A tu ritmo y con tus estudiantes.</span></div>
   </div>
@@ -697,7 +730,7 @@ formatted_name = full_name.replace(<span class="s">" "</span>, <span class="s">"
 </section>
 
 </main>
-<footer><div class="wrap">Prototipo ilustrativo de la propuesta Teacher Training de Arukay AI Campus. Contenido de ejemplo para Python 1.</div></footer>
+<footer><div class="wrap">Prototipo ilustrativo de la propuesta Teacher Training de Arukay AI Campus. Contenido de ejemplo para Python 1. Precios de referencia de tiendas colombianas (Electronilab y Sigma Electrónica), noviembre de 2026.</div></footer>
 
 <script>
 (function(){
@@ -721,6 +754,11 @@ formatted_name = full_name.replace(<span class="s">" "</span>, <span class="s">"
     visited.add(p); prog(); window.scrollTo({top:0});
   }
   $$('.tab').forEach(t=>t.addEventListener('click',()=>show(t.dataset.p)));
+
+  // podcast transcript
+  const pa=$('#podaudio'), tls=$$('#podtr .tl');
+  tls.forEach(b=>b.addEventListener('click',()=>{pa.currentTime=+b.dataset.t;pa.play()}));
+  pa.addEventListener('timeupdate',()=>{let k=-1;tls.forEach((b,i)=>{if(pa.currentTime>=+b.dataset.t)k=i});tls.forEach((b,i)=>b.classList.toggle('on',i===k))});
 
   // units
   const unames={u1:'Unidad 1: Variables',u2:'Unidad 2: Condicionales',u4:'Unidad 4: Bibliotecas'};
