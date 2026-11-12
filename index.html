@@ -17,7 +17,7 @@
   --code:#0F1E36; --codet:#D6E4FF;
   --fd:"Space Grotesk", Arial, sans-serif; --fb:Arial, Helvetica, sans-serif; --fm:"Courier New", monospace;
   --x06759c:#06759C; --x22801a:#22801A; --x7fd3f4:#7FD3F4; --x8193b2:#8193B2; --x8a5a00:#8A5A00; --x9be58f:#9BE58F; --x9fb0cc:#9FB0CC; --xb8381c:#B8381C; --xc7d3e8:#C7D3E8; --xf6c3b5:#F6C3B5; --xffd27a:#FFD27A;
-  --grb:#C9EBC1; --r:14px; --r2:10px;
+  --grb:#C9EBC1; --hsr:rgba(242,81,49,.35); --lt2:#C7D3E8; --grt:#8FE07F; --cot:#FF9C85; --r:14px; --r2:10px;
 }
 *{box-sizing:border-box}
 html,body{margin:0;overflow-x:clip}
@@ -186,14 +186,30 @@ textarea{width:100%;min-height:150px;border:1.5px solid var(--ln);border-radius:
 .fb.ok{color:var(--x22801a)}.fb.no{color:var(--xb8381c)}
 
 /* guía docente */
-.guide{display:grid;grid-template-columns:240px minmax(0,1fr);border:1px solid var(--ln);border-radius:var(--r);overflow:hidden;background:var(--paper)}
-.guide nav{background:var(--bg);padding:12px;display:grid;gap:4px;align-content:start}
-.guide nav button{border:0;background:none;text-align:left;border-radius:8px;padding:9px 12px}
-.guide nav button[aria-current="true"]{background:var(--paper);color:var(--bl);font-weight:700;box-shadow:0 1px 0 var(--ln)}
-.guide .pg{padding:20px 24px}
-.guide .pg h4{font-size:20px;margin-bottom:8px}
-.sol{margin-top:12px}
-
+.gmap{display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:10px;margin-bottom:18px}
+.gt{border:2px solid var(--ln);background:var(--paper);border-radius:10px;padding:6px;text-align:left;transition:border-color .15s ease,transform .15s ease}
+.gt:hover{border-color:var(--bl);transform:translateY(-2px)}
+.gt[aria-current="true"]{border-color:var(--cy);box-shadow:0 0 0 3px var(--cyl)}
+.gt img{width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:6px;display:block}
+.gt span{display:block;font-size:13px;font-weight:700;color:var(--nv);margin-top:6px;line-height:1.25}
+.gt.ok{border-color:var(--gr);box-shadow:0 0 0 3px var(--grl)}.gt.no{border-color:var(--co)}
+.gview{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:18px;align-items:start}
+.page{position:relative;border-radius:var(--r);overflow:hidden;border:1px solid var(--ln);background:var(--nv)}
+.page img{width:100%;display:block}
+.hs{position:absolute;transform:translate(-50%,-50%);width:34px;height:34px;border-radius:50%;border:3px solid var(--paper);background:var(--co);color:var(--paper);font-family:var(--fd);font-weight:700;box-shadow:0 0 0 4px var(--hsr);transition:transform .15s ease}
+.hs:hover,.hs[aria-pressed="true"]{transform:translate(-50%,-50%) scale(1.15)}
+.hs[aria-pressed="true"]{background:var(--nv)}
+.notes{display:grid;gap:10px}
+.notes h3{font-size:20px}
+.nt{display:flex;gap:10px;align-items:flex-start;text-align:left;background:var(--paper);border:1.5px solid var(--ln);border-radius:12px;padding:10px 12px;font-size:15px}
+.nt i{flex:none;font-style:normal;width:26px;height:26px;border-radius:50%;background:var(--co);color:var(--paper);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px}
+.nt.on{border-color:var(--nv);background:var(--bll)}
+.gtask{margin-top:24px;background:var(--nv);color:var(--paper);border-radius:var(--r);padding:18px 22px}
+.gtask h3{color:var(--paper);font-size:20px;margin-bottom:4px}
+.gtask p{margin:0;color:var(--lt2)}
+.gfb{margin-top:10px;font-weight:700;min-height:1.5em}
+.gfb.ok{color:var(--grt)}.gfb.no{color:var(--cot)}
+@media (max-width:900px){.gmap{grid-template-columns:repeat(4,minmax(0,1fr))}.gview{grid-template-columns:minmax(0,1fr)}}
 /* tutor kay */
 .vid{width:100%;aspect-ratio:16/9;border-radius:var(--r);background:var(--nv);display:block}
 .prompt{white-space:pre-wrap;font-size:14px;margin:0 0 12px}
@@ -217,6 +233,9 @@ textarea{width:100%;min-height:150px;border:1.5px solid var(--ln);border-radius:
 .flow .card b{display:block;font-family:var(--fd);font-size:18px;color:var(--nv);margin:8px 0 4px}
 .num{width:34px;height:34px;border-radius:50%;color:var(--paper);display:flex;align-items:center;justify-content:center;font-family:var(--fd);font-weight:700}
 
+.phys{margin-top:14px;border:2px dashed var(--gr);border-radius:var(--r);background:var(--paper);padding:18px 20px}
+.phys-h{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:10px}.phys-h h3{font-size:19px}
+.mats{margin:6px 0 0;padding-left:18px;font-size:14px}
 .switchrow{display:flex;gap:10px;margin-bottom:16px;flex-wrap:wrap}
 /* quiz */
 .q{display:none}.q.on{display:block}
@@ -583,6 +602,13 @@ formatted_name = full_name.replace(<span class="s">" "</span>, <span class="s">"
         </ul>
       </div>
     </div>
+    <div class="phys">
+      <div class="phys-h"><span class="pill gr">Versión física con Arduino</span><h3>Carné con tarjeta inteligente</h3></div>
+      <div class="g2">
+        <p class="small" style="margin:0">Cada carné lleva una tarjeta RFID. Al acercarla al lector, el Arduino avisa al programa de Python, que busca el nombre, lo formatea con los métodos de la sesión 10 y lo muestra en una pantalla LCD. Así funciona el control de entrada de un colegio o una biblioteca.</p>
+        <div><b class="small">Materiales por equipo</b><ul class="mats"><li>Arduino UNO con cable USB</li><li>Lector RFID RC522 y tarjetas</li><li>Pantalla LCD 16x2 con módulo I2C</li><li>Cables de conexión</li></ul></div>
+      </div>
+    </div>
   </div>
   <div class="sv hide" id="s15">
     <div class="g2">
@@ -610,11 +636,22 @@ formatted_name = full_name.replace(<span class="s">" "</span>, <span class="s">"
         </ul>
       </div>
     </div>
+    <div class="phys">
+      <div class="phys-h"><span class="pill gr">Versión física con Arduino</span><h3>Contador de botellas recicladas</h3></div>
+      <div class="g2">
+        <p class="small" style="margin:0">En lugar de escribir los datos, un sensor infrarrojo en la boca del contenedor detecta cada botella y el Arduino la envía al programa. Un botón cierra el registro, igual que el número negativo del reto: el mismo ciclo while con break, ahora con datos reales del colegio.</p>
+        <div><b class="small">Materiales por equipo</b><ul class="mats"><li>Arduino UNO con cable USB</li><li>Sensor infrarrojo de obstáculos</li><li>Pulsador y LED</li><li>Caja de cartón como contenedor</li></ul></div>
+      </div>
+    </div>
+  </div>
+  <div class="card" style="margin-top:18px;display:flex;gap:16px;align-items:center;flex-wrap:wrap">
+    <div style="flex:1;min-width:260px"><h3 style="font-size:20px;margin-bottom:4px">Del código al mundo real</h3><p class="small muted" style="margin:0">Un proyecto STEAM se toca: con una placa Arduino y componentes electrónicos, tus estudiantes ven su programa funcionando fuera de la pantalla. Si aún no tienes el kit, empieza con el simulador.</p></div>
+    <a class="btn ghost" href="https://angielopez437-cyber.github.io/arukay-proyecto-steam/" target="_blank" rel="noopener">Ver un proyecto físico completo</a>
   </div>
   <h3 style="font-size:22px;margin:26px 0 12px">Cómo lo llevas a tu aula</h3>
   <div class="flow">
     <div class="card top-cy"><div class="num" style="background:var(--cy)">1</div><b>Parte de un reto</b><span class="small muted">Elige el reto de la sesión 10 o de la sesión 15.</span></div>
-    <div class="card top-bl"><div class="num" style="background:var(--bl)">2</div><b>Agrega algo nuevo</b><span class="small muted">Un dato real del colegio, una regla más o un producto que tus estudiantes puedan mostrar.</span></div>
+    <div class="card top-bl"><div class="num" style="background:var(--bl)">2</div><b>Agrega algo nuevo</b><span class="small muted">Un dato real del colegio y una versión física con Arduino que tus estudiantes puedan mostrar.</span></div>
     <div class="card top-co"><div class="num" style="background:var(--co)">3</div><b>Planéalo con Tutor Kay</b><span class="small muted">Pídele el plan de clases, los materiales y las preguntas para guiar.</span></div>
     <div class="card top-gr"><div class="num" style="background:var(--gr)">4</div><b>Desarróllalo en clase</b><span class="small muted">A tu ritmo y con tus estudiantes.</span></div>
   </div>
