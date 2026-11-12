@@ -105,7 +105,7 @@ main{padding:28px 0 60px}
 .res button small{color:var(--mu);font-size:13px;white-space:nowrap}
 .res button:hover{background:var(--bg)}
 .res button[aria-current="true"]{background:var(--bll);color:var(--bl);font-weight:700}
-.res button.seen small:before{content:"✓ ";color:var(--gr)}
+.res button.seen:after{content:"✓";color:var(--gr)}
 .res .tot{border-top:1px solid var(--ln);margin-top:6px;padding:10px 12px 4px;font-size:14px;color:var(--mu)}
 .rv{display:none}.rv.on{display:block}
 .rv h3{font-size:24px;margin-bottom:6px}
@@ -217,6 +217,7 @@ textarea{width:100%;min-height:150px;border:1.5px solid var(--ln);border-radius:
 .flow .card b{display:block;font-family:var(--fd);font-size:18px;color:var(--nv);margin:8px 0 4px}
 .num{width:34px;height:34px;border-radius:50%;color:var(--paper);display:flex;align-items:center;justify-content:center;font-family:var(--fd);font-weight:700}
 
+.switchrow{display:flex;gap:10px;margin-bottom:16px;flex-wrap:wrap}
 /* quiz */
 .q{display:none}.q.on{display:block}
 .qhead{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:10px;flex-wrap:wrap}
@@ -226,6 +227,7 @@ textarea{width:100%;min-height:150px;border:1.5px solid var(--ln);border-radius:
 .tag{display:none;font-size:12px;font-weight:700;border-radius:6px;padding:2px 8px;background:var(--aml);color:var(--x8a5a00);border:1px dashed var(--am)}
 .internal .tag{display:inline-block}
 .result{text-align:center;padding:30px}
+.revs{text-align:left;margin:0 0 20px;display:grid;gap:10px}.revs h4{font-size:18px}.rev{border:1px solid var(--ln);border-left:4px solid var(--co);border-radius:10px;padding:12px 14px}
 .result .big{font-family:var(--fd);font-weight:700;font-size:64px;color:var(--nv);line-height:1}
 .ctab{display:none;margin-top:20px;text-align:left}
 .internal .ctab{display:block}
@@ -285,9 +287,9 @@ footer{border-top:1px solid var(--ln);padding:18px 0 30px;color:var(--mu);font-s
 
 <!-- INTRODUCCIÓN -->
 <section class="panel on" id="intro" role="tabpanel">
-  <div class="ph"><h2>Introducción</h2><span class="pill">5 min</span></div>
+  <div class="ph"><h2>Introducción</h2></div>
   <div class="g2">
-    <div class="video" role="img" aria-label="Video de bienvenida"><div class="play"></div><b>Bienvenida al curso</b><span>Video de 2 min</span></div>
+    <div class="video" role="img" aria-label="Video de bienvenida"><div class="play"></div><b>Bienvenida al curso</b><span>Video</span></div>
     <div>
       <div class="mission">
         <span class="pill">Misión del curso</span>
@@ -295,7 +297,7 @@ footer{border-top:1px solid var(--ln);padding:18px 0 30px;color:var(--mu);font-s
         <p>La misma situación que enfrentan tus estudiantes en Python 1. Al final del curso sabrás resolverla y guiarlos para que la resuelvan.</p>
       </div>
       <ol class="steps">
-        <li><span>1</span><div><b>Conceptos:</b> 4 unidades de 50 min y un Reto integrador.</div></li>
+        <li><span>1</span><div><b>Conceptos:</b> 4 unidades y un Reto integrador.</div></li>
         <li><span>2</span><div><b>Guía docente y Tutor Kay:</b> aprendes a usar tus dos apoyos para preparar cada clase.</div></li>
         <li><span>3</span><div><b>Proyecto STEAM y Evaluación:</b> llevas lo aprendido a tu aula y recibes tu certificado.</div></li>
       </ol>
@@ -305,40 +307,39 @@ footer{border-top:1px solid var(--ln);padding:18px 0 30px;color:var(--mu);font-s
 
 <!-- CONCEPTOS -->
 <section class="panel" id="conc" role="tabpanel">
-  <div class="ph"><h2>Conceptos</h2><span class="pill">220 min</span><span class="muted small">Recórrelas en el orden que prefieras</span></div>
+  <div class="ph"><h2>Conceptos</h2><span class="muted small">Recórrelas en el orden que prefieras</span></div>
   <div class="units" role="group" aria-label="Unidades">
-    <button class="unit" aria-pressed="false" data-u="u1"><small>Unidad 1, 50 min</small><b>Variables</b></button>
-    <button class="unit" aria-pressed="false" data-u="u2"><small>Unidad 2, 50 min</small><b>Condicionales</b></button>
-    <button class="unit" aria-pressed="true" data-u="u3"><small>Unidad 3, 50 min</small><b>Ciclos</b></button>
-    <button class="unit" aria-pressed="false" data-u="u4"><small>Unidad 4, 50 min</small><b>Bibliotecas</b></button>
-    <button class="unit ri" aria-pressed="false" data-u="ri"><small>20 min</small><b>Reto integrador</b></button>
+    <button class="unit" aria-pressed="false" data-u="u1"><small>Unidad 1</small><b>Variables</b></button>
+    <button class="unit" aria-pressed="false" data-u="u2"><small>Unidad 2</small><b>Condicionales</b></button>
+    <button class="unit" aria-pressed="true" data-u="u3"><small>Unidad 3</small><b>Ciclos</b></button>
+    <button class="unit" aria-pressed="false" data-u="u4"><small>Unidad 4</small><b>Bibliotecas</b></button>
+    <button class="unit ri" aria-pressed="false" data-u="ri"><small>Cierre</small><b>Reto integrador</b></button>
   </div>
 
   <div class="uv hide" id="u-other">
     <div class="card">
       <h3 id="uo-t">Unidad</h3>
-      <p class="muted">En este prototipo está completa la unidad 3, Ciclos. Las demás unidades tienen la misma estructura de 50 minutos:</p>
-      <p class="small">Video, 3 min; infografía, 5 min; mapa mental, 4 min; tarjetas de memoria, 6 min; ejemplo resuelto, 7 min; reto del curso del estudiante, 20 min; caso de aula, 5 min.</p>
+      <p class="muted">En este prototipo está completa la unidad 3, Ciclos. Las demás unidades tienen la misma estructura:</p>
+      <p class="small">Video, infografía, mapa mental, tarjetas de memoria, ejemplo resuelto, reto del curso del estudiante y caso de aula.</p>
     </div>
   </div>
 
   <div class="uv" id="u3">
     <div class="ulay">
       <div class="res" role="tablist" aria-label="Recursos de la unidad 3">
-        <button aria-current="true" data-r="r-video">Video <small>3 min</small></button>
-        <button data-r="r-info">Infografía <small>5 min</small></button>
-        <button data-r="r-mapa">Mapa mental <small>4 min</small></button>
-        <button data-r="r-tarj">Tarjetas de memoria <small>6 min</small></button>
-        <button data-r="r-ej">Ejemplo resuelto <small>7 min</small></button>
-        <button data-r="r-reto">Reto del curso del estudiante <small>20 min</small></button>
-        <button data-r="r-caso">Caso de aula <small>5 min</small></button>
-        <div class="tot">Total de la unidad: 50 min</div>
+        <button aria-current="true" data-r="r-video">Video</button>
+        <button data-r="r-info">Infografía</button>
+        <button data-r="r-mapa">Mapa mental</button>
+        <button data-r="r-tarj">Tarjetas de memoria</button>
+        <button data-r="r-ej">Ejemplo resuelto</button>
+        <button data-r="r-reto">Reto del curso del estudiante</button>
+        <button data-r="r-caso">Caso de aula</button>
       </div>
       <div>
         <div class="rv on" id="r-video">
           <h3>Video: el ciclo que suma los precios</h3>
-          <p class="lead">Una situación de la tienda virtual del curso del estudiante, en 3 minutos.</p>
-          <div class="video" role="img" aria-label="Video de 3 minutos"><div class="play"></div><b>Ciclos en la tienda virtual</b><span>3 min</span></div>
+          <p class="lead">Una situación de la tienda virtual del curso del estudiante.</p>
+          <div class="video" role="img" aria-label="Video de la unidad"><div class="play"></div><b>Ciclos en la tienda virtual</b></div>
         </div>
 
         <div class="rv" id="r-info">
@@ -457,7 +458,7 @@ total = <span class="n">0</span>
 
   <div class="uv hide" id="ri">
     <div class="card top-co">
-      <div class="ph" style="margin-bottom:8px"><h3>Reto integrador</h3><span class="pill co">20 min</span></div>
+      <div class="ph" style="margin-bottom:8px"><h3>Reto integrador</h3></div>
       <p class="lead" style="margin-bottom:12px">Une los 4 conceptos del curso en una situación nueva.</p>
       <p><b>La tienda virtual tiene 5 productos.</b> Guarda los precios en una lista, recórrelos con un ciclo, aplica un 10 % de descuento solo a los que pasan de $20.000 y usa la biblioteca math para redondear el total hacia abajo.</p>
       <div class="kw" style="margin-bottom:16px"><span>Variables</span><span>Condicionales</span><span>Ciclos</span><span>Bibliotecas</span></div>
@@ -480,7 +481,7 @@ total = <span class="n">0</span>
 
 <!-- GUÍA DOCENTE -->
 <section class="panel" id="guia" role="tabpanel">
-  <div class="ph"><h2>Guía docente</h2><span class="pill">15 min</span></div>
+  <div class="ph"><h2>Guía docente</h2></div>
   <p class="lead">Cada sesión del curso del estudiante tiene su guía docente, con la clase paso a paso y la solución de los retos. Ejemplo: guía de la sesión 1 de Python.</p>
   <div class="guide">
     <nav aria-label="Secciones de la guía">
@@ -494,8 +495,8 @@ total = <span class="n">0</span>
         <ol class="steps">
           <li><span>1</span><div><b>Objetivos</b> de la sesión. En la sesión 1: imprimir el menú de un restaurante con print().</div></li>
           <li><span>2</span><div><b>Lo que debes saber:</b> los conceptos clave explicados para ti, como qué es un string.</div></li>
-          <li><span>3</span><div><b>Actividad desconectada, 20 min:</b> un juego en grupos, sin computador, con una hoja para imprimir.</div></li>
-          <li><span>4</span><div><b>Actividad en línea, 45 min:</b> el reto STEM en el editor, paso a paso.</div></li>
+          <li><span>3</span><div><b>Actividad desconectada:</b> un juego en grupos, sin computador, con una hoja para imprimir.</div></li>
+          <li><span>4</span><div><b>Actividad en línea:</b> el reto STEM en el editor, paso a paso.</div></li>
           <li><span>5</span><div><b>Cierre:</b> preguntas para reflexionar con el grupo sobre los errores más comunes.</div></li>
           <li><span>6</span><div><b>Soluciones y evaluación:</b> el código de cada reto, las preguntas con su retroalimentación y un banco de refuerzo.</div></li>
         </ol>
@@ -523,12 +524,12 @@ total = <span class="n">0</span>
 
 <!-- TUTOR KAY -->
 <section class="panel" id="kay" role="tabpanel">
-  <div class="ph"><h2>Tutor Kay</h2><span class="pill">15 min</span></div>
+  <div class="ph"><h2>Tutor Kay</h2></div>
   <p class="lead">Tutor Kay ya está dentro de la plataforma Arukay. Aquí aprendes a usarlo para preparar tus clases: mira el video, recorre la infografía y descarga la guía.</p>
   <div class="g2">
     <div>
       <video class="vid" controls preload="metadata" src="tutor-kay.mp4" aria-label="Video: cómo usar Tutor Kay"></video>
-      <p class="small muted" style="margin:8px 0 14px">Video de 2 min: encontrar errores, crear ejercicios de refuerzo y resolver dudas.</p>
+      <p class="small muted" style="margin:8px 0 14px">En el video: encontrar errores, crear ejercicios de refuerzo y resolver dudas.</p>
       <a class="btn" href="tutor-kay-guia.pdf" download>Descargar la guía en PDF</a>
     </div>
     <div class="card">
@@ -546,43 +547,93 @@ total = <span class="n">0</span>
   <div class="g3">
     <div class="card top-cy"><b>Encontrar y corregir errores</b><p class="small muted">Pega el código de un estudiante.</p><pre class="code prompt">Encuentra el error en este código de Python y explica la solución.</pre><button class="btn ghost copy" type="button">Copiar</button></div>
     <div class="card top-bl"><b>Crear ejercicios de refuerzo</b><p class="small muted">Práctica extra sobre un tema.</p><pre class="code prompt">Crea 5 ejercicios de ciclos for para estudiantes de colegio.</pre><button class="btn ghost copy" type="button">Copiar</button></div>
-    <div class="card top-co"><b>Diseñar proyectos y actividades</b><p class="small muted">Para preparar tus clases.</p><pre class="code prompt">Propón una actividad de 20 minutos sobre condicionales, en parejas.</pre><button class="btn ghost copy" type="button">Copiar</button></div>
+    <div class="card top-co"><b>Diseñar proyectos y actividades</b><p class="small muted">Para preparar tus clases.</p><pre class="code prompt">Propón una actividad corta sobre condicionales, en parejas.</pre><button class="btn ghost copy" type="button">Copiar</button></div>
   </div>
   <p class="note" style="margin-top:18px"><b>Antes de llevarlo al aula:</b> revisa la respuesta con la guía docente del curso. Tutor Kay te da una base; tú la ajustas a tus estudiantes.</p>
 </section>
 
 <!-- PROYECTO STEAM -->
 <section class="panel" id="steam" role="tabpanel">
-  <div class="ph"><h2>Proyecto STEAM</h2><span class="pill">30 min</span></div>
-  <p class="lead">Aprende cómo se desarrolla un proyecto en tu aula a partir de los retos que ya existen en el curso del estudiante.</p>
-  <div class="flow">
-    <div class="card top-cy"><div class="num" style="background:var(--cy)">1</div><b>Parte de un reto</b><span class="small muted">Elige el reto de la sesión 10 o de la sesión 15 del curso del estudiante.</span></div>
-    <div class="card top-bl"><div class="num" style="background:var(--bl)">2</div><b>Agrega algo nuevo</b><span class="small muted">Un dato real de tu contexto, una regla más o un producto que tus estudiantes puedan mostrar.</span></div>
-    <div class="card top-co"><div class="num" style="background:var(--co)">3</div><b>Diséñalo con Tutor Kay</b><span class="small muted">Pídele el plan de sesiones, los materiales y las preguntas para guiar.</span></div>
-    <div class="card top-gr"><div class="num" style="background:var(--gr)">4</div><b>Llévalo a tu aula</b><span class="small muted">Desarróllalo con tus estudiantes, a tu ritmo.</span></div>
+  <div class="ph"><h2>Proyecto STEAM</h2></div>
+  <p class="lead">Tus estudiantes ya resolvieron estos retos en el curso. Aquí aprendes a convertir uno de ellos en un proyecto para tu aula, agregándole algo nuevo.</p>
+  <div class="switchrow" role="tablist" aria-label="Retos del curso del estudiante">
+    <button class="btn" type="button" data-s="s10" aria-pressed="true">Reto de la sesión 10</button>
+    <button class="btn ghost" type="button" data-s="s15" aria-pressed="false">Reto de la sesión 15</button>
   </div>
-  <div class="g2" style="margin-top:18px">
-    <div class="card">
-      <h3 style="font-size:20px;margin-bottom:8px">Ejemplo de proyecto</h3>
-      <p class="small" style="margin-top:0">Semáforo para la salida del colegio: un proyecto STEAM completo, con materiales, pasos y video.</p>
-      <a class="btn ghost" href="https://angielopez437-cyber.github.io/arukay-proyecto-steam/" target="_blank" rel="noopener">Abrir el proyecto de ejemplo</a>
+  <div class="sv" id="s10">
+    <div class="g2">
+      <div class="card top-cy">
+        <span class="pill">El reto del estudiante</span>
+        <h3 style="font-size:20px;margin:10px 0 6px">Nombres para una base de datos</h3>
+        <p class="small" style="margin-top:0">El usuario escribe su nombre completo y el programa lo transforma con métodos de texto: lo pasa a minúsculas, separa el primer nombre, toma la inicial, cuenta los caracteres y cambia los espacios por guiones bajos.</p>
+        <pre class="code">full_name = <span class="k">input</span>(<span class="s">"Enter your full name: "</span>).lower()
+first_name = full_name.split()[<span class="n">0</span>]
+formatted_name = full_name.replace(<span class="s">" "</span>, <span class="s">"_"</span>)
+<span class="k">print</span>(formatted_name)  <span class="c"># pablo_duarte</span></pre>
+        <p class="small muted" style="margin-bottom:0">Conceptos: input(), lower(), split(), len() y replace().</p>
+      </div>
+      <div class="card top-co">
+        <span class="pill co">Algo nuevo para tu aula</span>
+        <h3 style="font-size:20px;margin:10px 0 6px">Carnés del curso</h3>
+        <p class="small" style="margin-top:0">Con la lista de nombres de la clase, un ciclo genera el usuario de cada estudiante: inicial y apellido, en minúsculas y con guion bajo. Después cada uno diseña su carné en papel o en Canva.</p>
+        <ul class="small" style="padding-left:18px;margin:0">
+          <li><b>Ciencia y tecnología:</b> cómo se guardan los nombres en una base de datos.</li>
+          <li><b>Arte:</b> el diseño del carné.</li>
+          <li><b>Matemáticas:</b> el nombre más largo y la longitud promedio.</li>
+        </ul>
+      </div>
     </div>
-    <div class="card" style="background:var(--grl);border-color:var(--grb)">
-      <h3 style="font-size:20px;margin-bottom:8px">No entregas evidencia</h3>
-      <p class="small" style="margin:0">Confiamos en que lo aplicarás. Esta pestaña te da el camino y las herramientas; el proyecto es tuyo y de tus estudiantes.</p>
+  </div>
+  <div class="sv hide" id="s15">
+    <div class="g2">
+      <div class="card top-cy">
+        <span class="pill">El reto del estudiante</span>
+        <h3 style="font-size:20px;margin:10px 0 6px">Sumar hasta un número negativo</h3>
+        <p class="small" style="margin-top:0">"Usando ciclos, realiza un programa en el que se le pregunte un número al usuario. El programa deberá sumar todos los números positivos que el usuario escriba, pero si ingresa un número negativo entonces deberá mostrar la suma total, se despedirá y se finalizará el programa."</p>
+        <pre class="code">suma = <span class="n">0</span>
+<span class="k">while</span> True:
+    num = <span class="k">int</span>(<span class="k">input</span>(<span class="s">"Ingresa un número: "</span>))
+    <span class="k">if</span> num &lt; <span class="n">0</span>:
+        <span class="k">break</span>
+    suma += num
+<span class="k">print</span>(<span class="s">"La suma es:"</span>, suma, <span class="s">"¡Hasta pronto!"</span>)</pre>
+        <p class="small muted" style="margin-bottom:0">Conceptos: ciclo while, break y acumuladores.</p>
+      </div>
+      <div class="card top-co">
+        <span class="pill co">Algo nuevo para tu aula</span>
+        <h3 style="font-size:20px;margin:10px 0 6px">Registro de reciclaje del colegio</h3>
+        <p class="small" style="margin-top:0">Cada día el grupo ingresa los kilos de material reciclado; un número negativo cierra el registro. El programa muestra el total, cuenta los días, calcula el promedio y lo compara con una meta del colegio.</p>
+        <ul class="small" style="padding-left:18px;margin:0">
+          <li><b>Ciencia:</b> el impacto del reciclaje en el entorno.</li>
+          <li><b>Tecnología:</b> el programa que lleva el registro.</li>
+          <li><b>Matemáticas:</b> total, promedio y comparación con la meta.</li>
+        </ul>
+      </div>
     </div>
+  </div>
+  <h3 style="font-size:22px;margin:26px 0 12px">Cómo lo llevas a tu aula</h3>
+  <div class="flow">
+    <div class="card top-cy"><div class="num" style="background:var(--cy)">1</div><b>Parte de un reto</b><span class="small muted">Elige el reto de la sesión 10 o de la sesión 15.</span></div>
+    <div class="card top-bl"><div class="num" style="background:var(--bl)">2</div><b>Agrega algo nuevo</b><span class="small muted">Un dato real del colegio, una regla más o un producto que tus estudiantes puedan mostrar.</span></div>
+    <div class="card top-co"><div class="num" style="background:var(--co)">3</div><b>Planéalo con Tutor Kay</b><span class="small muted">Pídele el plan de clases, los materiales y las preguntas para guiar.</span></div>
+    <div class="card top-gr"><div class="num" style="background:var(--gr)">4</div><b>Desarróllalo en clase</b><span class="small muted">A tu ritmo y con tus estudiantes.</span></div>
+  </div>
+  <div class="card" style="background:var(--grl);border-color:var(--grb);margin-top:18px">
+    <h3 style="font-size:20px;margin-bottom:8px">No entregas evidencia</h3>
+    <p class="small" style="margin:0">Confiamos en que lo aplicarás. Esta pestaña te da el camino y las herramientas; el proyecto es tuyo y de tus estudiantes.</p>
   </div>
 </section>
 
 <!-- EVALUACIÓN -->
 <section class="panel" id="eval" role="tabpanel">
-  <div class="ph"><h2>Evaluación</h2><span class="pill">15 min</span></div>
+  <div class="ph"><h2>Evaluación</h2></div>
   <div class="card" id="quiz">
-    <div class="qhead"><span class="muted small" id="qcount">Pregunta 1 de 6</span><div class="dots" id="qdots"></div></div>
+    <div class="qhead"><span class="muted small" id="qcount">Pregunta 1 de 7</span><div class="dots" id="qdots"></div></div>
     <div id="qbox"></div>
     <div class="result hide" id="qres">
       <div class="big" id="qscore"></div>
       <p class="lead" style="margin:10px auto 18px" id="qmsg"></p>
+      <div id="qrev" class="revs"></div>
       <button class="btn ghost" id="qretry" type="button">Volver a intentar</button>
       <div class="ctab"><h4 style="margin-bottom:8px">Resultado por competencia (vista interna)</h4><table><thead><tr><th>Competencia</th><th>Aciertos</th></tr></thead><tbody id="qtab"></tbody></table></div>
     </div>
@@ -737,12 +788,13 @@ total = <span class="n">0</span>
   const Q=[
     {t:'¿Qué muestra la consola al ejecutar este código?',c:"print('The number of Orders is:', print(5))",o:['The number of Orders is: 5','5 y en la línea siguiente: The number of Orders is: None','SyntaxError'],a:1,tag:'Programación',fb:['print muestra en pantalla, pero no devuelve el 5: devuelve None.','Correcto: el print interno se ejecuta primero, muestra 5 y devuelve None.','La sintaxis es válida: se puede llamar una función dentro de otra.']},
     {t:'¿Qué imprime este programa?',c:'total = 0\nfor i in range(1, 10, 2):\n    total = total + i\nprint(total)',o:['45','20','25'],a:2,tag:'Lógica matemática',fb:['45 sería sumar del 1 al 9; el 2 hace que avance de dos en dos.','Revisa: el ciclo suma 1, 3, 5, 7 y 9.','Correcto: 1 + 3 + 5 + 7 + 9 = 25.']},
+    {t:'Un estudiante prueba el reto de la sesión 15 con 5, 0, 7 y -2. ¿Qué muestra el programa?',c:'suma = 0\nwhile True:\n    num = int(input())\n    if num < 0:\n        break\n    suma += num\nprint("La suma es:", suma)',o:['La suma es: 12','La suma es: 10','Un error, porque 0 no es positivo'],a:0,tag:'Lógica matemática',fb:['Correcto: el 0 se suma (5 + 0 + 7) y el -2 corta el ciclo antes de sumarse.','El -2 no se suma: break ocurre antes de suma += num.','La condición es num < 0, así que el 0 se acepta sin error.']},
     {t:'Un estudiante quiere sumar los precios y escribe esto. ¿Qué imprime?',c:'precios = [12000, 8000, 5000]\nfor p in precios:\n    total = 0\n    total = total + p\nprint(total)',o:['25000','5000, porque total vuelve a cero en cada vuelta','Un error, porque total se define dentro del ciclo'],a:1,tag:'Programación',fb:['Eso pasaría si total = 0 estuviera antes del ciclo.','Correcto: en cada vuelta total se reinicia y al final solo queda el último precio.','Python permite crear la variable dentro del ciclo; no hay error.']},
     {t:"Un estudiante escribe print('Name: '(Rogeer)') y obtiene SyntaxError. ¿Qué haces?",o:["Le dicto print('Name: Rogeer') para que avance",'Le pido que señale dónde empieza y dónde termina cada texto y que cuente las comillas','Le explico que los paréntesis no pueden ir dentro de print'],a:1,tag:'Mediación pedagógica',fb:['Avanza, pero no entiende por qué falló.','Correcto: así descubre él mismo que las comillas no cierran donde cree.','Es falso: el problema son las comillas, no los paréntesis.']},
-    {t:'Según la guía docente de la sesión 1, ¿cómo se organiza la clase?',o:['Actividad desconectada de 20 min, actividad en línea de 45 min con el reto STEM y cierre de reflexión','Evaluación al inicio, reto en línea y actividad desconectada al final','65 minutos en el editor resolviendo el reto STEM'],a:0,tag:'Guía docente',fb:['Correcto: primero el juego sin computador, luego el reto en el editor y al final la reflexión.','La evaluación va al final, con su banco de refuerzo.','La guía empieza sin computador, con la actividad desconectada.']},
+    {t:'Según la guía docente de la sesión 1, ¿cómo se organiza la clase?',o:['Actividad desconectada, luego actividad en línea con el reto STEM y cierre de reflexión','Evaluación al inicio, reto en línea y actividad desconectada al final','Toda la clase en el editor resolviendo el reto STEM'],a:0,tag:'Guía docente',fb:['Correcto: primero el juego sin computador, luego el reto en el editor y al final la reflexión.','La evaluación va al final, con su banco de refuerzo.','La guía empieza sin computador, con la actividad desconectada.']},
     {t:'Un estudiante te muestra un código con un error que no logras ver. ¿Cómo usas Tutor Kay?',o:['Eliges el curso, tomas la pregunta "Encuentra el error", pegas el código y revisas la explicación antes de usarla con él','Le pides a Tutor Kay que reescriba todo el programa y se lo entregas al estudiante','Le dices al estudiante que le pregunte a Tutor Kay y copie la respuesta'],a:0,tag:'Tutor Kay',fb:['Correcto: Tutor Kay te ayuda a ti; tú decides cómo guiar al estudiante.','Así el estudiante recibe la respuesta sin entender su error.','Copiar la respuesta no le ayuda a encontrar el error por sí mismo.']}
   ];
-  let qi=0, ans=[];
+  let qi=0, ans=[], picks=[];
   $('#qdots').innerHTML=Q.map(()=>'<i></i>').join('');
   function esc(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;')}
   function renderQ(){
@@ -753,9 +805,10 @@ total = <span class="n">0</span>
       '<div class="choices">'+q.o.map((o,i)=>'<button class="choice" data-i="'+i+'"><span>'+'ABC'[i]+'</span>'+esc(o)+'</button>').join('')+'</div><div class="fb" aria-live="polite"></div><p style="margin-top:14px"><button class="btn hide" id="qnext" type="button">'+(qi<Q.length-1?'Siguiente pregunta':'Ver resultado')+'</button></p></div>';
     $$('#qbox .choice').forEach(c=>c.addEventListener('click',()=>{
       if(ans.length>qi) return;
-      const i=+c.dataset.i, ok=i===q.a; ans.push(ok);
+      const i=+c.dataset.i, ok=i===q.a; ans.push(ok); picks.push(i);
       c.classList.add(ok?'ok':'no'); if(!ok) $$('#qbox .choice')[q.a].classList.add('ok');
-      const f=$('#qbox .fb'); f.className='fb '+(ok?'ok':'no'); f.textContent=q.fb[i];
+      const f=$('#qbox .fb'); f.className='fb '+(ok?'ok':'no');
+      f.innerHTML=ok?'<b>¡Correcto!</b> '+esc(q.fb[i]):'<b>Revisa tu respuesta.</b> '+esc(q.fb[i])+'<br><b>Respuesta correcta: '+'ABC'[q.a]+'.</b> '+esc(q.fb[q.a].replace(/^Correcto: ?/,'').replace(/^./,c=>c.toUpperCase()));
       $('#qnext').classList.remove('hide');
     }));
     $('#qnext').addEventListener('click',()=>{qi++; qi<Q.length?renderQ():result()});
@@ -766,14 +819,22 @@ total = <span class="n">0</span>
     $$('#qdots i').forEach((d,i)=>d.className=ans[i]?'ok':'no');
     $('#qcount').textContent='Resultado';
     $('#qscore').textContent=s+' de '+Q.length;
-    $('#qmsg').textContent=s>=5?'¡Muy bien! Completaste la evaluación del curso.':'Completaste la evaluación. Repasa las unidades y vuelve a intentarlo cuando quieras.';
+    $('#qmsg').textContent=s>=6?'¡Muy bien! Completaste la evaluación del curso.':'Completaste la evaluación. Repasa las unidades y vuelve a intentarlo cuando quieras.';
     const agg={};Q.forEach((q,i)=>{agg[q.tag]=agg[q.tag]||[0,0];agg[q.tag][1]++;if(ans[i])agg[q.tag][0]++});
     $('#qtab').innerHTML=Object.entries(agg).map(([k,v])=>'<tr><td>'+k+'</td><td>'+v[0]+' de '+v[1]+'</td></tr>').join('');
+    const wrong=Q.map((q,i)=>[q,i]).filter(([q,i])=>!ans[i]);
+    $('#qrev').innerHTML=wrong.length?'<h4>Repasa las preguntas que fallaste</h4>'+wrong.map(([q,i])=>'<div class="rev"><b>Pregunta '+(i+1)+':</b> '+esc(q.t)+'<p class="small" style="margin:6px 0 0">Tu respuesta: '+esc(q.o[picks[i]])+'. '+esc(q.fb[picks[i]])+'</p><p class="small" style="margin:4px 0 0"><b>Respuesta correcta:</b> '+esc(q.o[q.a])+'. '+esc(q.fb[q.a].replace(/^Correcto: ?/,'').replace(/^./,c=>c.toUpperCase()))+'</p></div>').join(''):'';
     quizDone=true; prog();
   }
-  $('#qretry').addEventListener('click',()=>{qi=0;ans=[];$('#qbox').classList.remove('hide');$('#qres').classList.add('hide');renderQ()});
+  $('#qretry').addEventListener('click',()=>{qi=0;ans=[];picks=[];$('#qbox').classList.remove('hide');$('#qres').classList.add('hide');renderQ()});
   $('#internal').addEventListener('change',e=>$('#quiz').classList.toggle('internal',e.target.checked));
   renderQ();
+
+  // steam switch
+  $$('.switchrow button').forEach(b=>b.addEventListener('click',()=>{
+    $$('.switchrow button').forEach(x=>{const on=x===b;x.setAttribute('aria-pressed',on);x.className=on?'btn':'btn ghost'});
+    $$('.sv').forEach(v=>v.classList.toggle('hide',v.id!==b.dataset.s));
+  }));
 
   // certificate
   $('#preview').addEventListener('click',()=>{$('#locked').classList.add('hide');$('#certok').classList.remove('hide')});
