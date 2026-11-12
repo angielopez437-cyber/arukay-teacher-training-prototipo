@@ -48,7 +48,7 @@ code,pre{font-family:var(--fm)}
 .tab small{font-size:12px;opacity:.8}
 .tab:hover{color:var(--paper)}
 .tab[aria-selected="true"]{color:var(--paper);border-bottom-color:var(--cy)}
-.tab.done small:after{content:" ✓";color:var(--gr)}
+.tab.done b:after{content:" ✓";color:var(--gr)}
 
 /* panels */
 main{padding:28px 0 60px}
@@ -66,7 +66,7 @@ main{padding:28px 0 60px}
 .g3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
 .muted{color:var(--mu)}
 .small{font-size:14px}
-.btn{display:inline-flex;align-items:center;gap:8px;border:0;border-radius:10px;padding:10px 18px;font-family:var(--fd);font-weight:500;background:var(--bl);color:var(--paper);transition:background-color .15s ease,transform .1s ease}
+.btn{text-decoration:none;display:inline-flex;align-items:center;gap:8px;border:0;border-radius:10px;padding:10px 18px;font-family:var(--fd);font-weight:500;background:var(--bl);color:var(--paper);transition:background-color .15s ease,transform .1s ease}
 .btn:hover{background:var(--nv2)}
 .btn:active{transform:translateY(1px)}
 .btn.ghost{background:var(--paper);color:var(--bl);border:1.5px solid var(--bl)}
@@ -195,6 +195,9 @@ textarea{width:100%;min-height:150px;border:1.5px solid var(--ln);border-radius:
 .sol{margin-top:12px}
 
 /* tutor kay */
+.vid{width:100%;aspect-ratio:16/9;border-radius:var(--r);background:var(--nv);display:block}
+.prompt{white-space:pre-wrap;font-size:14px;margin:0 0 12px}
+.copy{padding:6px 14px;font-size:14px}
 .tk{background:var(--nv2);border-radius:var(--r);padding:20px;display:grid;gap:14px}
 .tk .log{min-height:260px;display:flex;flex-direction:column;gap:12px;justify-content:flex-end}
 .msg{max-width:78%;border-radius:12px;padding:12px 16px;font-family:var(--fm);font-size:15px;line-height:1.55;white-space:pre-wrap}
@@ -268,13 +271,13 @@ footer{border-top:1px solid var(--ln);padding:18px 0 30px;color:var(--mu);font-s
 </header>
 <nav class="tabs" aria-label="Pestañas del curso">
   <div class="wrap" role="tablist">
-    <button class="tab" role="tab" aria-selected="true" data-p="intro"><svg viewBox="0 0 24 24"><path d="M7 11V6a2 2 0 0 1 4 0v4m0-1V4a2 2 0 0 1 4 0v6m0-3a2 2 0 0 1 4 0v7a7 7 0 0 1-7 7h-1a7 7 0 0 1-6-3l-3-5a2 2 0 0 1 3-2l2 2"/></svg><b>Introducción</b><small>5 min</small></button>
-    <button class="tab" role="tab" aria-selected="false" data-p="conc"><svg viewBox="0 0 24 24"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-4 10c1 1 1 2 1 3h6c0-1 0-2 1-3a6 6 0 0 0-4-10z"/></svg><b>Conceptos</b><small>220 min</small></button>
-    <button class="tab" role="tab" aria-selected="false" data-p="guia"><svg viewBox="0 0 24 24"><path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2zM4 21V5M8 7h7M8 11h7"/></svg><b>Guía docente</b><small>15 min</small></button>
-    <button class="tab" role="tab" aria-selected="false" data-p="kay"><svg viewBox="0 0 24 24"><path d="M4 5h16v11H9l-5 4zM8 9h8M8 12h5"/></svg><b>Tutor Kay</b><small>15 min</small></button>
-    <button class="tab" role="tab" aria-selected="false" data-p="steam"><svg viewBox="0 0 24 24"><path d="M5 21V4M5 4h11l-2 4 2 4H5"/></svg><b>Proyecto STEAM</b><small>30 min</small></button>
-    <button class="tab" role="tab" aria-selected="false" data-p="eval"><svg viewBox="0 0 24 24"><path d="M9 4h6v3H9zM7 5H5v16h14V5h-2M8 13l3 3 5-6"/></svg><b>Evaluación</b><small>15 min</small></button>
-    <button class="tab" role="tab" aria-selected="false" data-p="cert"><svg viewBox="0 0 24 24"><circle cx="12" cy="9" r="6"/><path d="M9 14l-2 7 5-3 5 3-2-7"/></svg><b>Certificación</b><small>al terminar</small></button>
+    <button class="tab" role="tab" aria-selected="true" data-p="intro"><svg viewBox="0 0 24 24"><path d="M7 11V6a2 2 0 0 1 4 0v4m0-1V4a2 2 0 0 1 4 0v6m0-3a2 2 0 0 1 4 0v7a7 7 0 0 1-7 7h-1a7 7 0 0 1-6-3l-3-5a2 2 0 0 1 3-2l2 2"/></svg><b>Introducción</b></button>
+    <button class="tab" role="tab" aria-selected="false" data-p="conc"><svg viewBox="0 0 24 24"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-4 10c1 1 1 2 1 3h6c0-1 0-2 1-3a6 6 0 0 0-4-10z"/></svg><b>Conceptos</b></button>
+    <button class="tab" role="tab" aria-selected="false" data-p="guia"><svg viewBox="0 0 24 24"><path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2zM4 21V5M8 7h7M8 11h7"/></svg><b>Guía docente</b></button>
+    <button class="tab" role="tab" aria-selected="false" data-p="kay"><svg viewBox="0 0 24 24"><path d="M4 5h16v11H9l-5 4zM8 9h8M8 12h5"/></svg><b>Tutor Kay</b></button>
+    <button class="tab" role="tab" aria-selected="false" data-p="steam"><svg viewBox="0 0 24 24"><path d="M5 21V4M5 4h11l-2 4 2 4H5"/></svg><b>Proyecto STEAM</b></button>
+    <button class="tab" role="tab" aria-selected="false" data-p="eval"><svg viewBox="0 0 24 24"><path d="M9 4h6v3H9zM7 5H5v16h14V5h-2M8 13l3 3 5-6"/></svg><b>Evaluación</b></button>
+    <button class="tab" role="tab" aria-selected="false" data-p="cert"><svg viewBox="0 0 24 24"><circle cx="12" cy="9" r="6"/><path d="M9 14l-2 7 5-3 5 3-2-7"/></svg><b>Certificación</b></button>
   </div>
 </nav>
 
@@ -293,7 +296,7 @@ footer{border-top:1px solid var(--ln);padding:18px 0 30px;color:var(--mu);font-s
       </div>
       <ol class="steps">
         <li><span>1</span><div><b>Conceptos:</b> 4 unidades de 50 min y un Reto integrador.</div></li>
-        <li><span>2</span><div><b>Guía docente y Tutor Kay:</b> tus dos apoyos para preparar cada clase.</div></li>
+        <li><span>2</span><div><b>Guía docente y Tutor Kay:</b> aprendes a usar tus dos apoyos para preparar cada clase.</div></li>
         <li><span>3</span><div><b>Proyecto STEAM y Evaluación:</b> llevas lo aprendido a tu aula y recibes tu certificado.</div></li>
       </ol>
     </div>
@@ -478,36 +481,39 @@ total = <span class="n">0</span>
 <!-- GUÍA DOCENTE -->
 <section class="panel" id="guia" role="tabpanel">
   <div class="ph"><h2>Guía docente</h2><span class="pill">15 min</span></div>
-  <p class="lead">La guía docente tiene la solución de todos los ejercicios del curso del estudiante. Aquí aprendes a encontrar lo que necesitas antes de cada clase.</p>
+  <p class="lead">Cada sesión del curso del estudiante tiene su guía docente, con la clase paso a paso y la solución de los retos. Ejemplo: guía de la sesión 1 de Python.</p>
   <div class="guide">
     <nav aria-label="Secciones de la guía">
-      <button aria-current="true" data-g="g1">Qué contiene</button>
+      <button aria-current="true" data-g="g1">Cómo está organizada</button>
       <button data-g="g2">Cómo preparar una clase</button>
-      <button data-g="g3">Práctica: encuentra una solución</button>
+      <button data-g="g3">Práctica: úsala</button>
     </nav>
     <div class="pg">
       <div class="gp" id="g1">
-        <h4>Qué contiene la guía</h4>
-        <div class="g3" style="margin-top:12px">
-          <div class="card top-cy"><b>Por sesión</b><p class="small muted" style="margin-bottom:0">Lo que trabajan los estudiantes en cada sesión del curso.</p></div>
-          <div class="card top-bl"><b>Soluciones</b><p class="small muted" style="margin-bottom:0">La respuesta de cada ejercicio y de cada reto.</p></div>
-          <div class="card top-co"><b>Para la clase</b><p class="small muted" style="margin-bottom:0">Qué preguntar cuando un estudiante se atasca.</p></div>
-        </div>
+        <h3 style="font-size:20px">Las partes de la guía de una sesión</h3>
+        <ol class="steps">
+          <li><span>1</span><div><b>Objetivos</b> de la sesión. En la sesión 1: imprimir el menú de un restaurante con print().</div></li>
+          <li><span>2</span><div><b>Lo que debes saber:</b> los conceptos clave explicados para ti, como qué es un string.</div></li>
+          <li><span>3</span><div><b>Actividad desconectada, 20 min:</b> un juego en grupos, sin computador, con una hoja para imprimir.</div></li>
+          <li><span>4</span><div><b>Actividad en línea, 45 min:</b> el reto STEM en el editor, paso a paso.</div></li>
+          <li><span>5</span><div><b>Cierre:</b> preguntas para reflexionar con el grupo sobre los errores más comunes.</div></li>
+          <li><span>6</span><div><b>Soluciones y evaluación:</b> el código de cada reto, las preguntas con su retroalimentación y un banco de refuerzo.</div></li>
+        </ol>
       </div>
       <div class="gp hide" id="g2">
-        <h4>Cómo preparar una clase en 3 pasos</h4>
+        <h3 style="font-size:20px">Cómo preparar una clase en 3 pasos</h3>
         <ol class="steps">
           <li><span>1</span><div><b>Resuelve el reto tú primero,</b> sin mirar la solución.</div></li>
-          <li><span>2</span><div><b>Compara con la guía</b> y anota dónde te equivocaste: ahí también se equivocarán tus estudiantes.</div></li>
-          <li><span>3</span><div><b>Elige 2 preguntas</b> para guiar sin entregar la respuesta.</div></li>
+          <li><span>2</span><div><b>Compara con la sección de soluciones</b> y anota dónde dudaste: ahí también dudarán tus estudiantes.</div></li>
+          <li><span>3</span><div><b>Prepara el cierre:</b> elige 2 preguntas para reflexionar sobre los errores más comunes.</div></li>
         </ol>
       </div>
       <div class="gp hide" id="g3">
-        <h4>Práctica: ¿dónde buscas la solución del reto de la sesión 10?</h4>
+        <h3 style="font-size:20px">Práctica: un estudiante no logra que el menú del restaurante se vea como el ejemplo. ¿Dónde buscas primero?</h3>
         <div class="choices" id="gq">
-          <button class="choice" data-ok="1" data-fb="Correcto: cada sesión de la guía trae la solución de sus ejercicios y retos."><span>A</span>En la guía docente, en la sesión 10.</button>
-          <button class="choice" data-ok="0" data-fb="El curso del estudiante trae el reto, pero no la solución."><span>B</span>En la sesión 10 del curso del estudiante.</button>
-          <button class="choice" data-ok="0" data-fb="Tutor Kay te ayuda a crear actividades; la solución oficial está en la guía docente."><span>C</span>Le pregunto a Tutor Kay.</button>
+          <button class="choice" data-ok="1" data-fb="Correcto: en Soluciones está el código de cada paso del reto para comparar línea por línea."><span>A</span>En la sección de soluciones de la guía, en el código del paso 1 del reto STEM.</button>
+          <button class="choice" data-ok="0" data-fb="Los objetivos dicen qué se logra en la sesión, pero no traen el código."><span>B</span>En los objetivos de la sesión.</button>
+          <button class="choice" data-ok="0" data-fb="El banco de refuerzo sirve para practicar después, no para revisar el reto."><span>C</span>En el banco de preguntas de refuerzo.</button>
         </div>
         <div class="fb" id="gqfb" aria-live="polite"></div>
       </div>
@@ -518,20 +524,31 @@ total = <span class="n">0</span>
 <!-- TUTOR KAY -->
 <section class="panel" id="kay" role="tabpanel">
   <div class="ph"><h2>Tutor Kay</h2><span class="pill">15 min</span></div>
-  <p class="lead">Úsalo para crear proyectos, actividades didácticas y rutas de aprendizaje. Elige el curso, selecciona una pregunta precargada y compleméntala.</p>
-  <div class="tk">
-    <div class="chips"><button class="course" type="button" aria-pressed="true">Python 1</button></div>
-    <div class="log" id="tklog" aria-live="polite">
-      <div class="msg bot">¡Hola! Soy Tutor Kay. Hazme una pregunta o elige una de las opciones que se muestran abajo.</div>
+  <p class="lead">Tutor Kay ya está dentro de la plataforma Arukay. Aquí aprendes a usarlo para preparar tus clases: mira el video, recorre la infografía y descarga la guía.</p>
+  <div class="g2">
+    <div>
+      <video class="vid" controls preload="metadata" src="tutor-kay.mp4" aria-label="Video: cómo usar Tutor Kay"></video>
+      <p class="small muted" style="margin:8px 0 14px">Video de 2 min: encontrar errores, crear ejercicios de refuerzo y resolver dudas.</p>
+      <a class="btn" href="tutor-kay-guia.pdf" download>Descargar la guía en PDF</a>
     </div>
-    <div class="chips" id="tkchips">
-      <button type="button" data-k="0">Crea un proyecto con ciclos</button>
-      <button type="button" data-k="1">Diseña una actividad de 20 min sobre condicionales</button>
-      <button type="button" data-k="2">Propón una ruta de 4 clases sobre variables</button>
+    <div class="card">
+      <h3 style="font-size:20px;margin-bottom:10px">Cómo se usa, en 4 pasos</h3>
+      <ol class="steps" style="margin-top:0">
+        <li><span>1</span><div><b>Elige el curso</b> debajo del chat para ver las preguntas precargadas.</div></li>
+        <li><span>2</span><div><b>Selecciona una pregunta</b> y compleméntala con lo que necesitas.</div></li>
+        <li><span>3</span><div><b>Haz clic en Enviar.</b> La respuesta puede tardar unos segundos.</div></li>
+        <li><span>4</span><div><b>Para empezar de nuevo,</b> usa el botón de reiniciar arriba a la derecha.</div></li>
+      </ol>
     </div>
-    <div class="inp"><input id="tkin" type="text" placeholder="Escribe tu mensaje..." aria-label="Mensaje para Tutor Kay"><button class="btn" id="tksend" type="button" aria-label="Enviar">Enviar</button></div>
   </div>
-  <p class="small muted">En el prototipo, las respuestas son ejemplos fijos.</p>
+  <h3 style="font-size:22px;margin:26px 0 6px">Qué le puedes pedir</h3>
+  <p class="small muted" style="margin:0 0 12px">Copia un ejemplo y pégalo en Tutor Kay.</p>
+  <div class="g3">
+    <div class="card top-cy"><b>Encontrar y corregir errores</b><p class="small muted">Pega el código de un estudiante.</p><pre class="code prompt">Encuentra el error en este código de Python y explica la solución.</pre><button class="btn ghost copy" type="button">Copiar</button></div>
+    <div class="card top-bl"><b>Crear ejercicios de refuerzo</b><p class="small muted">Práctica extra sobre un tema.</p><pre class="code prompt">Crea 5 ejercicios de ciclos for para estudiantes de colegio.</pre><button class="btn ghost copy" type="button">Copiar</button></div>
+    <div class="card top-co"><b>Diseñar proyectos y actividades</b><p class="small muted">Para preparar tus clases.</p><pre class="code prompt">Propón una actividad de 20 minutos sobre condicionales, en parejas.</pre><button class="btn ghost copy" type="button">Copiar</button></div>
+  </div>
+  <p class="note" style="margin-top:18px"><b>Antes de llevarlo al aula:</b> revisa la respuesta con la guía docente del curso. Tutor Kay te da una base; tú la ajustas a tus estudiantes.</p>
 </section>
 
 <!-- PROYECTO STEAM -->
@@ -561,7 +578,7 @@ total = <span class="n">0</span>
 <section class="panel" id="eval" role="tabpanel">
   <div class="ph"><h2>Evaluación</h2><span class="pill">15 min</span></div>
   <div class="card" id="quiz">
-    <div class="qhead"><span class="muted small" id="qcount">Pregunta 1 de 5</span><div class="dots" id="qdots"></div></div>
+    <div class="qhead"><span class="muted small" id="qcount">Pregunta 1 de 6</span><div class="dots" id="qdots"></div></div>
     <div id="qbox"></div>
     <div class="result hide" id="qres">
       <div class="big" id="qscore"></div>
@@ -709,27 +726,21 @@ total = <span class="n">0</span>
     $$('.gp').forEach(p=>p.classList.toggle('hide',p.id!==b.dataset.g));
   }));
 
-  // tutor kay
-  const K=[
-    ['Crea un proyecto con ciclos para mis estudiantes de Python 1.','Proyecto: "La tienda de la feria escolar"\n1. Los estudiantes listan 5 productos con su precio.\n2. Un ciclo calcula el total de cada compra.\n3. Agregan un descuento para los estudiantes.\nProducto final: un programa que atiende la caja de la feria.'],
-    ['Diseña una actividad de 20 min sobre condicionales.','Actividad: "¿Pasa o no pasa?"\n5 min: pregunta inicial, ¿cuándo se aprueba una materia?\n10 min: en parejas escriben un if que diga "aprobado" o "reprobado".\n5 min: cada pareja prueba su programa con la nota de un compañero.'],
-    ['Propón una ruta de 4 clases sobre variables.','Ruta de 4 clases:\n1. Qué es una variable: cajas con nombre.\n2. Tipos: números y texto.\n3. Operaciones: sumar precios.\n4. Reto: la ficha de un personaje con 5 variables.']
-  ];
-  function say(me,bot){
-    $('#tklog').insertAdjacentHTML('beforeend','<div class="msg me"></div>'); $('#tklog').lastElementChild.textContent=me;
-    setTimeout(()=>{$('#tklog').insertAdjacentHTML('beforeend','<div class="msg bot"></div>'); $('#tklog').lastElementChild.textContent=bot},500);
-  }
-  $$('#tkchips button').forEach(b=>b.addEventListener('click',()=>{const k=K[+b.dataset.k];say(k[0],k[1])}));
-  function send(){const v=$('#tkin').value.trim(); if(!v)return; $('#tkin').value=''; say(v,'En el prototipo respondo solo a las preguntas precargadas. Elige una de las opciones de abajo.')}
-  $('#tksend').addEventListener('click',send); $('#tkin').addEventListener('keydown',e=>{if(e.key==='Enter')send()});
+  // tutor kay prompts
+  $$('.copy').forEach(b=>b.addEventListener('click',()=>{
+    const t=b.previousElementSibling.textContent;
+    (navigator.clipboard?navigator.clipboard.writeText(t):Promise.reject()).then(()=>{b.textContent='Copiado'},()=>{b.textContent='Selecciona y copia'});
+    setTimeout(()=>b.textContent='Copiar',2000);
+  }));
 
   // quiz (competency tags are internal: data only, shown only in the internal view)
   const Q=[
-    {t:'¿Qué imprime este programa?',c:'for i in range(3):\n    print(i)',o:['1, 2 y 3','0, 1 y 2','0, 1, 2 y 3'],a:1,tag:'Programación',fb:['range(3) empieza en 0, no en 1.','Correcto: tres vueltas, de 0 a 2.','range(3) se detiene antes del 3.']},
-    {t:'¿Cuántas veces se repite range(2, 6)?',o:['4 veces','6 veces','5 veces'],a:0,tag:'Lógica matemática',fb:['Correcto: 6 − 2 = 4 vueltas.','El ciclo empieza en 2, no en 0.','El 6 no se incluye.']},
-    {t:'Un estudiante olvidó la sangría y Python muestra IndentationError. ¿Qué haces?',o:['Corrijo la línea por él','Le pregunto qué instrucciones quería repetir','Le digo que lea el error en internet'],a:1,tag:'Mediación pedagógica',fb:['Así no descubre la causa del error.','Correcto: con la pregunta encuentra qué debe quedar dentro del ciclo.','Sin guía, el mensaje del error no le dice qué hacer.']},
-    {t:'¿Dónde encuentras la solución del reto de la sesión 10?',o:['En el curso del estudiante','En la guía docente','En el video de la unidad'],a:1,tag:'Guía docente',fb:['El curso del estudiante trae el reto, no la solución.','Correcto: la guía docente trae la solución de cada ejercicio.','El video explica el concepto, no la solución del reto.']},
-    {t:'Quieres una actividad de 20 min sobre condicionales. ¿Cómo usas Tutor Kay?',o:['Selecciono Python 1, elijo una pregunta precargada y la complemento','Escribo "actividad" y envío','Tutor Kay no sirve para actividades'],a:0,tag:'Tutor Kay',fb:['Correcto: así la respuesta se ajusta al curso y a tu clase.','Sin el curso y el detalle, la respuesta será muy general.','Tutor Kay sí ayuda a crear actividades didácticas.']}
+    {t:'¿Qué muestra la consola al ejecutar este código?',c:"print('The number of Orders is:', print(5))",o:['The number of Orders is: 5','5 y en la línea siguiente: The number of Orders is: None','SyntaxError'],a:1,tag:'Programación',fb:['print muestra en pantalla, pero no devuelve el 5: devuelve None.','Correcto: el print interno se ejecuta primero, muestra 5 y devuelve None.','La sintaxis es válida: se puede llamar una función dentro de otra.']},
+    {t:'¿Qué imprime este programa?',c:'total = 0\nfor i in range(1, 10, 2):\n    total = total + i\nprint(total)',o:['45','20','25'],a:2,tag:'Lógica matemática',fb:['45 sería sumar del 1 al 9; el 2 hace que avance de dos en dos.','Revisa: el ciclo suma 1, 3, 5, 7 y 9.','Correcto: 1 + 3 + 5 + 7 + 9 = 25.']},
+    {t:'Un estudiante quiere sumar los precios y escribe esto. ¿Qué imprime?',c:'precios = [12000, 8000, 5000]\nfor p in precios:\n    total = 0\n    total = total + p\nprint(total)',o:['25000','5000, porque total vuelve a cero en cada vuelta','Un error, porque total se define dentro del ciclo'],a:1,tag:'Programación',fb:['Eso pasaría si total = 0 estuviera antes del ciclo.','Correcto: en cada vuelta total se reinicia y al final solo queda el último precio.','Python permite crear la variable dentro del ciclo; no hay error.']},
+    {t:"Un estudiante escribe print('Name: '(Rogeer)') y obtiene SyntaxError. ¿Qué haces?",o:["Le dicto print('Name: Rogeer') para que avance",'Le pido que señale dónde empieza y dónde termina cada texto y que cuente las comillas','Le explico que los paréntesis no pueden ir dentro de print'],a:1,tag:'Mediación pedagógica',fb:['Avanza, pero no entiende por qué falló.','Correcto: así descubre él mismo que las comillas no cierran donde cree.','Es falso: el problema son las comillas, no los paréntesis.']},
+    {t:'Según la guía docente de la sesión 1, ¿cómo se organiza la clase?',o:['Actividad desconectada de 20 min, actividad en línea de 45 min con el reto STEM y cierre de reflexión','Evaluación al inicio, reto en línea y actividad desconectada al final','65 minutos en el editor resolviendo el reto STEM'],a:0,tag:'Guía docente',fb:['Correcto: primero el juego sin computador, luego el reto en el editor y al final la reflexión.','La evaluación va al final, con su banco de refuerzo.','La guía empieza sin computador, con la actividad desconectada.']},
+    {t:'Un estudiante te muestra un código con un error que no logras ver. ¿Cómo usas Tutor Kay?',o:['Eliges el curso, tomas la pregunta "Encuentra el error", pegas el código y revisas la explicación antes de usarla con él','Le pides a Tutor Kay que reescriba todo el programa y se lo entregas al estudiante','Le dices al estudiante que le pregunte a Tutor Kay y copie la respuesta'],a:0,tag:'Tutor Kay',fb:['Correcto: Tutor Kay te ayuda a ti; tú decides cómo guiar al estudiante.','Así el estudiante recibe la respuesta sin entender su error.','Copiar la respuesta no le ayuda a encontrar el error por sí mismo.']}
   ];
   let qi=0, ans=[];
   $('#qdots').innerHTML=Q.map(()=>'<i></i>').join('');
@@ -755,8 +766,9 @@ total = <span class="n">0</span>
     $$('#qdots i').forEach((d,i)=>d.className=ans[i]?'ok':'no');
     $('#qcount').textContent='Resultado';
     $('#qscore').textContent=s+' de '+Q.length;
-    $('#qmsg').textContent=s>=4?'¡Muy bien! Completaste la evaluación del curso.':'Completaste la evaluación. Repasa las unidades y vuelve a intentarlo cuando quieras.';
-    $('#qtab').innerHTML=Q.map((q,i)=>'<tr><td>'+q.tag+'</td><td>'+(ans[i]?'Sí':'No')+'</td></tr>').join('');
+    $('#qmsg').textContent=s>=5?'¡Muy bien! Completaste la evaluación del curso.':'Completaste la evaluación. Repasa las unidades y vuelve a intentarlo cuando quieras.';
+    const agg={};Q.forEach((q,i)=>{agg[q.tag]=agg[q.tag]||[0,0];agg[q.tag][1]++;if(ans[i])agg[q.tag][0]++});
+    $('#qtab').innerHTML=Object.entries(agg).map(([k,v])=>'<tr><td>'+k+'</td><td>'+v[0]+' de '+v[1]+'</td></tr>').join('');
     quizDone=true; prog();
   }
   $('#qretry').addEventListener('click',()=>{qi=0;ans=[];$('#qbox').classList.remove('hide');$('#qres').classList.add('hide');renderQ()});
