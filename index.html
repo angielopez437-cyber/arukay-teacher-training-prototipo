@@ -348,12 +348,10 @@ footer{border-top:1px solid var(--ln);padding:18px 0 30px;color:var(--mu);font-s
       <div>
         <span class="pill">Podcast Arukay, episodio 1</span>
         <h3>¿Por qué aprender a programar hoy?</h3>
-        <p class="small muted" style="margin:0">Ana conversa con Andrés, ingeniero de software y docente de colegio, sobre un caso real de su clase.</p>
+        <p class="small muted" style="margin:0">Una conversación con un docente de programación sobre un caso real de su clase.</p>
       </div>
     </div>
-    <audio id="podaudio" controls preload="metadata" src="podcast.m4a"></audio>
-    <details class="trans"><summary>Ver la transcripción</summary><div id="podtr"><button class="tl" type="button" data-t="0.0"><b>Ana</b><span>Bienvenidos a este podcast de Arukay, donde hablamos de por qué aprender a programar hoy es tan importante. Para esto invitamos a Andrés, ingeniero de software y docente de programación en un colegio. Andrés, bienvenido.</span></button><button class="tl e" type="button" data-t="14.69"><b>Andrés</b><span>Gracias, Ana. Feliz de estar aquí.</span></button><button class="tl" type="button" data-t="18.08"><b>Ana</b><span>Empecemos con una pregunta directa: ¿por qué un estudiante de colegio debería aprender a programar?</span></button><button class="tl e" type="button" data-t="24.58"><b>Andrés</b><span>Porque programar es aprender a resolver problemas paso a paso. Te cuento un caso de mi clase. Una estudiante tenía que hacer veinte etiquetas para la feria del colegio, con el nombre y el precio de cada producto. Pensaba hacerlas una por una.</span></button><button class="tl" type="button" data-t="38.58"><b>Ana</b><span>¿Y qué pasó?</span></button><button class="tl e" type="button" data-t="39.82"><b>Andrés</b><span>Le pregunté: ¿qué se repite en todas las etiquetas? Descubrió que solo cambiaban el nombre y el precio. Con un ciclo de pocas líneas en Python hizo las veinte en segundos.</span></button><button class="tl" type="button" data-t="50.02"><b>Ana</b><span>Esa es justamente la misión de este curso.</span></button><button class="tl e" type="button" data-t="53.26"><b>Andrés</b><span>Exacto. Y lo importante no fue el código, fue la pregunta. Ella pasó de hacer la tarea a pensar cómo automatizarla.</span></button><button class="tl" type="button" data-t="60.99"><b>Ana</b><span>Hoy la inteligencia artificial también escribe código. ¿Sigue valiendo la pena aprender a programar?</span></button><button class="tl e" type="button" data-t="67.6"><b>Andrés</b><span>Más que nunca. La inteligencia artificial te da una respuesta, pero tú tienes que saber qué preguntar y si la respuesta está bien. Eso solo lo logra quien entiende cómo piensa un programa.</span></button><button class="tl" type="button" data-t="78.64"><b>Ana</b><span>¿Y qué papel tiene el docente en todo esto?</span></button><button class="tl e" type="button" data-t="81.74"><b>Andrés</b><span>El más importante. No necesitas saberlo todo. Necesitas hacer las preguntas correctas, como la de las etiquetas, y acompañar el error sin dar la respuesta.</span></button><button class="tl" type="button" data-t="91.43"><b>Ana</b><span>Un consejo para quien empieza este curso.</span></button><button class="tl e" type="button" data-t="94.5"><b>Andrés</b><span>Equivócate tú primero. Resuelve cada reto antes que tus estudiantes: donde te trabes tú, se trabarán ellos, y ya sabrás qué preguntarles.</span></button><button class="tl" type="button" data-t="103.67"><b>Ana</b><span>Gracias, Andrés. Y a ustedes, docentes, bienvenidos al Teacher Training en Python 1. ¡Empecemos!</span></button></div></details>
-    <p class="small muted" style="margin:10px 0 0">Muestra con voces sintéticas y personajes de ejemplo; la versión final se graba con voces reales.</p>
+    <p class="note" style="margin:0">Episodio en grabación. Muy pronto podrás escucharlo aquí.</p>
   </div>
 </section>
 
@@ -754,11 +752,6 @@ formatted_name = full_name.replace(<span class="s">" "</span>, <span class="s">"
     visited.add(p); prog(); window.scrollTo({top:0});
   }
   $$('.tab').forEach(t=>t.addEventListener('click',()=>show(t.dataset.p)));
-
-  // podcast transcript
-  const pa=$('#podaudio'), tls=$$('#podtr .tl');
-  tls.forEach(b=>b.addEventListener('click',()=>{pa.currentTime=+b.dataset.t;pa.play()}));
-  pa.addEventListener('timeupdate',()=>{let k=-1;tls.forEach((b,i)=>{if(pa.currentTime>=+b.dataset.t)k=i});tls.forEach((b,i)=>b.classList.toggle('on',i===k))});
 
   // units
   const unames={u1:'Unidad 1: Variables',u2:'Unidad 2: Condicionales',u4:'Unidad 4: Bibliotecas'};
