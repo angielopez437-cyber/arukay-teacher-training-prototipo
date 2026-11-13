@@ -4,20 +4,18 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Teacher Training en Python 1, prototipo Arukay</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
 <style>
 /* Hallmark · v2.0.0 · shape: app screen · theme: Arukay brand (user named, by request) · nav: course bar and seven tabs · footer: one prototype line · hero: none, app screen · signature: the Ciclos unit, every resource clickable */
 /* Hallmark · waive 7b: the Arukay platform and deck use pure white cards on navy; kept for brand continuity *//* critique: one course, seven tabs, each tab one job; the unit is the proof, the rest stays short */
 /* waive 12, 44b: app screen, no marketing hero | waive 58: a unit screen carries course content by design */
 :root{
-  --nv:#0D1B33; --nv2:#1F3A63; --bl:#375EAE; --cy:#09AAE2; --co:#F25131; --gr:#39C525; --am:#FFB020;
-  --paper:#FFFFFF; --bg:#F3F6FB; --ln:#DCE3EE; --mu:#5B6B85; --ik:#1B2A44;
+  --nv:#0F1729; --nv2:#2A4C83; --bl:#3763A9; --cy:#00A8E0; --co:#E9572B; --gr:#4DB922; --am:#FF8A00;
+  --paper:#FFFFFF; --bg:#F3F4F6; --ln:#E5E7EB; --mu:#6B7280; --ik:#181F2F;
   --cyl:#E3F5FC; --bll:#E8EEF8; --col:#FDECE7; --grl:#EAF8E6; --aml:#FFF4DE;
-  --code:#0F1E36; --codet:#D6E4FF;
-  --fd:"Space Grotesk", Arial, sans-serif; --fb:Arial, Helvetica, sans-serif; --fm:"Courier New", monospace;
+  --code:#1D2330; --codet:#D6E4FF;
+  --fd:ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; --fb:ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; --fm:"Courier New", monospace;
   --x06759c:#06759C; --x22801a:#22801A; --x7fd3f4:#7FD3F4; --x8193b2:#8193B2; --x8a5a00:#8A5A00; --x9be58f:#9BE58F; --x9fb0cc:#9FB0CC; --xb8381c:#B8381C; --xc7d3e8:#C7D3E8; --xf6c3b5:#F6C3B5; --xffd27a:#FFD27A;
-  --grb:#C9EBC1; --hsr:rgba(242,81,49,.35); --lt2:#C7D3E8; --grt:#8FE07F; --cot:#FF9C85; --r:14px; --r2:10px;
+  --grb:#C9EBC1; --hsr:rgba(242,81,49,.35); --lt2:#C7D3E8; --grt:#8FE07F; --cot:#FF9C85; --grad:linear-gradient(135deg,#3763A9,#00A8E0); --sh-soft:0 4px 20px -2px rgba(55,99,169,.08); --sh-med:0 8px 30px -4px rgba(55,99,169,.14); --tabmu:#DCEBFA; --tabok:#C6F5B8; --r:24px; --r2:14px;
 }
 *{box-sizing:border-box}
 html,body{margin:0;overflow-x:clip}
@@ -298,6 +296,33 @@ footer{border-top:1px solid var(--ln);padding:18px 0 30px;color:var(--mu);font-s
   .cert{position:absolute;left:0;top:0;width:100%}
   .cert .btn{display:none}
 }
+
+/* arukay.com look: system sans, extra-bold tight heads, blue-cyan gradient, pill buttons, soft blue shadows */
+h1,h2,h3,h4{font-weight:800;letter-spacing:-.02em}
+.ph h2{font-size:34px}
+.top{background:var(--paper);color:var(--ik);box-shadow:0 1px 0 var(--ln)}
+.top img{filter:none}
+.course{background:var(--bg)}
+.course b{font-weight:800;letter-spacing:-.01em;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.prog .bar{background:var(--ln)}
+.tabs{background:var(--grad)}
+.tab{color:var(--tabmu)}
+.tab b{font-weight:600}
+.tab[aria-selected="true"]{border-bottom-color:var(--paper)}
+.tab.done b:after{color:var(--tabok)}
+.btn{border-radius:999px;background:var(--grad);font-weight:700;padding:11px 22px;box-shadow:var(--sh-soft);transition:box-shadow .2s ease,transform .15s ease}
+.btn:hover{background:var(--grad);box-shadow:var(--sh-med);transform:translateY(-1px)}
+.btn.ghost{background:var(--paper);color:var(--bl);border:1.5px solid var(--bl);box-shadow:none}
+.btn.ghost:hover{background:var(--bll)}
+.card{border-radius:var(--r);box-shadow:var(--sh-soft)}
+.unit{border-radius:16px;box-shadow:var(--sh-soft)}
+.unit[aria-pressed="true"]{background:var(--grad);border-color:transparent}
+.res,.info,.map,.guide,.page,.pod,.fc .f,.fc .b{border-radius:var(--r)}
+.mission{background:var(--grad)}
+.mission p{color:var(--paper)}
+.pill{border-radius:999px}
+.choice{border-radius:16px}
+.switchrow .btn{padding:9px 18px}
 </style>
 <script>document.documentElement.classList.add('js')</script>
 </head>
