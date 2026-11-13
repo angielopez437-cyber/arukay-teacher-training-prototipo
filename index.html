@@ -251,6 +251,7 @@ textarea{width:100%;min-height:150px;border:1.5px solid var(--ln);border-radius:
 .tiers{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
 .tier{border:1px solid var(--ln);border-radius:12px;padding:14px}
 .tier .small{margin:8px 0 0}
+.mats-h{margin:12px 0 4px;font-weight:700;color:var(--nv)}
 .cost{margin:10px 0 0;font-family:var(--fd);font-weight:700;color:var(--nv)}
 @media (max-width:900px){.tiers{grid-template-columns:minmax(0,1fr)}}
 .switchrow{display:flex;gap:10px;margin-bottom:16px;flex-wrap:wrap}
@@ -661,8 +662,8 @@ formatted_name = full_name.replace(<span class="s">" "</span>, <span class="s">"
     <div class="phys">
       <div class="phys-h"><span class="pill gr">Llévalo al mundo real</span><h3>Carnés del curso</h3></div>
       <div class="tiers">
-        <div class="tier"><span class="pill gr">Sin costo</span><p class="small">Cada estudiante imprime o escribe en cartulina el usuario que generó su programa y diseña su carné.</p></div>
-        <div class="tier"><span class="pill bl">Kit por equipo</span><p class="small">Con una Raspberry Pi Pico, que se programa directamente en Python, un botón recorre los nombres de la clase y una pantalla muestra el usuario de cada uno.</p><ul class="mats"><li>Raspberry Pi Pico H</li><li>Pantalla LCD 16x2 con I2C</li><li>Pulsador</li><li>Mini protoboard y cables</li></ul><p class="cost">Aprox. $65.700 por equipo</p></div>
+        <div class="tier"><span class="pill gr">Sin kit</span><p class="small">Cada estudiante imprime o escribe en cartulina el usuario que generó su programa y diseña su carné.</p></div>
+        <div class="tier"><span class="pill bl">Kit por equipo</span><p class="small">Con una Raspberry Pi Pico, que se programa directamente en Python, un botón recorre los nombres de la clase y una pantalla muestra el usuario de cada uno.</p><p class="mats-h">Lista de compras</p><ul class="mats"><li>Raspberry Pi Pico H</li><li>Pantalla LCD 16x2 con I2C</li><li>Pulsador</li><li>Mini protoboard y cables</li></ul></div>
       </div>
     </div>
   </div>
@@ -695,8 +696,8 @@ formatted_name = full_name.replace(<span class="s">" "</span>, <span class="s">"
     <div class="phys">
       <div class="phys-h"><span class="pill gr">Llévalo al mundo real</span><h3>Contador de botellas recicladas</h3></div>
       <div class="tiers">
-        <div class="tier"><span class="pill gr">Sin costo</span><p class="small">Durante una semana el grupo cuenta en papel las botellas recicladas y las ingresa al programa; un número negativo cierra el registro.</p></div>
-        <div class="tier"><span class="pill bl">Kit por equipo</span><p class="small">Un sensor infrarrojo en la boca del contenedor cuenta cada botella y un botón cierra el registro: el mismo while con break, en una Raspberry Pi Pico.</p><ul class="mats"><li>Raspberry Pi Pico H</li><li>Sensor infrarrojo de obstáculos</li><li>Pulsador y LED</li><li>Mini protoboard y cables</li></ul><p class="cost">Aprox. $51.810 por equipo</p></div>
+        <div class="tier"><span class="pill gr">Sin kit</span><p class="small">Durante una semana el grupo cuenta en papel las botellas recicladas y las ingresa al programa; un número negativo cierra el registro.</p></div>
+        <div class="tier"><span class="pill bl">Kit por equipo</span><p class="small">Un sensor infrarrojo en la boca del contenedor cuenta cada botella y un botón cierra el registro: el mismo while con break, en una Raspberry Pi Pico.</p><p class="mats-h">Lista de compras</p><ul class="mats"><li>Raspberry Pi Pico H</li><li>Sensor infrarrojo de obstáculos</li><li>Pulsador y LED</li><li>Mini protoboard y cables</li></ul></div>
       </div>
     </div>
   </div>
@@ -753,7 +754,7 @@ formatted_name = full_name.replace(<span class="s">" "</span>, <span class="s">"
 </section>
 
 </main>
-<footer><div class="wrap">Prototipo ilustrativo de la propuesta Teacher Training de Arukay AI Campus. Contenido de ejemplo para Python 1. Precios de referencia de tiendas colombianas (Electronilab y Sigma Electrónica), noviembre de 2026.</div></footer>
+<footer><div class="wrap">Prototipo ilustrativo de la propuesta Teacher Training de Arukay AI Campus. Contenido de ejemplo para Python 1.</div></footer>
 
 <script>
 (function(){
