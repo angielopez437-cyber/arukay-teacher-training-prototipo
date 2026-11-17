@@ -389,6 +389,8 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.02em}
 .subs[hidden]{display:none}
 .subs li{background:var(--bg);border-radius:10px;padding:6px 10px;font-size:14px;text-align:left}
 .more{grid-column:1/-1;display:flex;gap:10px;flex-wrap:wrap;align-items:center;border-top:1px dashed var(--ln);padding-top:16px}
+.morehd{flex-basis:100%;margin:0;font-weight:700;color:var(--nv)}
+.morehd[hidden]{display:none}
 .more .node{flex:0 1 200px;border-style:dashed}
 .addc{border:2px dashed var(--bl);border-radius:14px;background:var(--paper);color:var(--bl);font-weight:700;padding:10px 16px;transition:background-color .15s ease}
 .addc:hover{background:var(--bll)}
@@ -535,7 +537,7 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.02em}
 
         <div class="rv" id="r-mapa">
           <h3>Mapa mental: lo que se conecta con el ciclo for</h3>
-          <p class="lead">Haz clic en cada idea para ver su definición. Con + ves ejemplos, y con "Conectar otro concepto" sumas ideas que se relacionan con el ciclo.</p>
+          <p class="lead">Haz clic en cada idea para ver su definición. Con + ves ejemplos, y al final descubre qué temas vienen después del ciclo for.</p>
           <div class="map" id="map">
             <div class="col">
               <div class="nodew">
@@ -567,7 +569,7 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.02em}
               </div>
             </div>
             <div class="detail" id="mdet" aria-live="polite"><p class="muted" style="margin:0">Elige una idea del mapa.</p></div>
-            <div class="more" id="more"><button class="addc" id="addc" type="button">+ Conectar otro concepto</button></div>
+            <div class="more" id="more"><p class="morehd" id="morehd" hidden>Temas que se apoyan en el ciclo</p><button class="addc" id="addc" type="button">+ ¿Qué viene después del ciclo for?</button></div>
           </div>
         </div>
 
@@ -970,10 +972,10 @@ formatted_name = full_name.replace(<span class="s">" "</span>, <span class="s">"
     ['range(5) no incluye el 5','IndentationError por la sangría','print fuera del ciclo: imprime solo una vez']
   ];
   const MORE=[
-    ['Listas','for p in precios recorre cada elemento de la lista, sin usar range.',['elemento','recorrer','for p in lista']],
-    ['Acumulador','total = total + p suma en cada vuelta. total empieza en 0 antes del ciclo.',['total = 0','sumar','fuera del ciclo']],
-    ['Ciclo while','Repite mientras una condición sea verdadera. Útil cuando no sabes cuántas vueltas habrá.',['condición','mientras','vueltas desconocidas']],
-    ['break','Detiene el ciclo antes de tiempo, como en el reto de la sesión 15 al ingresar un número negativo.',['salir','sesión 15','if + break']]
+    ['Listas','for p in precios recorre cada elemento de la lista, sin usar range.',['elemento','recorrer','for p in lista'],'Recorre cada elemento sin range'],
+    ['Acumulador','total = total + p suma en cada vuelta. total empieza en 0 antes del ciclo.',['total = 0','sumar','fuera del ciclo'],'Suma algo en cada vuelta'],
+    ['Ciclo while','Repite mientras una condición sea verdadera. Útil cuando no sabes cuántas vueltas habrá.',['condición','mientras','vueltas desconocidas'],'Repite sin saber cuántas vueltas'],
+    ['break','Detiene el ciclo antes de tiempo, como en el reto de la sesión 15 al ingresar un número negativo.',['salir','sesión 15','if + break'],'Detiene el ciclo antes (reto sesión 15)']
   ];
   function showDet(m){ $('#mdet').innerHTML='<h5>'+m[0]+'</h5><p style="margin:0">'+m[1]+'</p><div class="kw">'+m[2].map(k=>'<span>'+k+'</span>').join('')+'</div>'; }
   $$('.plus').forEach(p=>p.addEventListener('click',()=>{
@@ -986,10 +988,10 @@ formatted_name = full_name.replace(<span class="s">" "</span>, <span class="s">"
   $('#addc').addEventListener('click',()=>{
     const m=MORE[added++]; const b=document.createElement('button');
     b.className='node'; b.type='button'; b.setAttribute('aria-expanded','false');
-    b.innerHTML='<b>'+m[0]+'</b><small>Se conecta con el ciclo</small>';
+    b.innerHTML='<b>'+m[0]+'</b><small>'+m[3]+'</small>'; $('#morehd').hidden=false;
     b.addEventListener('click',()=>{ $$('.node').forEach(x=>x.setAttribute('aria-expanded','false')); b.setAttribute('aria-expanded','true'); showDet(m); });
     $('#more').insertBefore(b,$('#addc')); b.click();
-    if(added>=MORE.length){ $('#addc').disabled=true; $('#addc').textContent='Ya conectaste todos los conceptos'; }
+    if(added>=MORE.length){ $('#addc').disabled=true; $('#addc').textContent='Ya viste los temas que siguen'; }
   });
   $$('.node').forEach(b=>b.addEventListener('click',()=>{
     const open=b.getAttribute('aria-expanded')==='true';
