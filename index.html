@@ -324,6 +324,31 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.02em}
 .pill{border-radius:999px}
 .choice{border-radius:16px}
 .switchrow .btn{padding:9px 18px}
+
+/* Design Thinking phases: same colours as the STEM challenge in the student guides (Arukay Coding 3) */
+:root{--dt-e:#FF3131; --dt-d:#FFB679; --dt-i:#F8D742; --dt-p:#88B876; --dt-t:#80D6F4;
+  --dt-el:#FFE5E5; --dt-dl:#FFF0E3; --dt-il:#FEF8DB; --dt-pl:#EBF4E7; --dt-tl:#E3F6FD}
+[data-dt^="e"]{--ph:var(--dt-e)}[data-dt^="d"]{--ph:var(--dt-d)}[data-dt^="i"]{--ph:var(--dt-i)}[data-dt^="p"]{--ph:var(--dt-p)}[data-dt^="t"]{--ph:var(--dt-t)}
+.ph{align-items:center}
+.dt{list-style:none;display:flex;flex-wrap:wrap;gap:6px;margin:0 0 0 auto;padding:0}
+.dt li{font-size:13px;font-weight:700;color:var(--mu);background:var(--paper);border:2px solid var(--ln);border-radius:999px;padding:3px 12px}
+.dt li.on{color:var(--ik)}
+.dt li.dt-e.on{background:var(--dt-e);border-color:var(--dt-e)}.dt li.dt-d.on{background:var(--dt-d);border-color:var(--dt-d)}
+.dt li.dt-i.on{background:var(--dt-i);border-color:var(--dt-i)}.dt li.dt-p.on{background:var(--dt-p);border-color:var(--dt-p)}
+.dt li.dt-t.on{background:var(--dt-t);border-color:var(--dt-t)}
+.tab{border-top:4px solid var(--tph,transparent)}
+.tab[data-p="intro"]{--tph:var(--dt-e)}.tab[data-p="conc"]{--tph:var(--dt-i)}.tab[data-p="guia"],.tab[data-p="kay"],.tab[data-p="steam"]{--tph:var(--dt-p)}.tab[data-p="eval"],.tab[data-p="cert"]{--tph:var(--dt-t)}
+[data-dt] .video,[data-dt] .vid,[data-dt] .page,[data-dt] .cert img,[data-dt] .pod,[data-dt] .info,[data-dt] .map{border:4px solid var(--ph)}
+[data-dt] .card[class*="top-"],[data-dt] .phys{border-top:5px solid var(--ph)}
+[data-dt] .phys{border-style:solid;border-color:var(--ph)}
+.dtstep{display:inline-block;font-size:13px;font-weight:700;color:var(--ik);background:var(--ph);border-radius:999px;padding:3px 12px;margin-bottom:8px}
+.define{margin-top:18px;background:var(--dt-dl)}
+.define textarea{width:100%;min-height:76px;border:2px solid var(--dt-d);border-radius:14px;padding:12px;font:inherit;color:var(--ik);background:var(--paper);resize:vertical}
+.define textarea:focus-visible{outline:3px solid var(--bl);outline-offset:2px}
+.myreto{margin-bottom:18px;background:var(--dt-tl)}
+.myreto blockquote{margin:8px 0;padding:10px 14px;background:var(--paper);border-left:5px solid var(--dt-t);border-radius:10px;color:var(--ik)}
+.flow5{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:14px}
+@media (max-width:1000px){.flow5{grid-template-columns:repeat(2,minmax(0,1fr))}.dt{margin-left:0}}
 </style>
 <script>document.documentElement.classList.add('js')</script>
 </head>
@@ -350,8 +375,9 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.02em}
 <main class="wrap">
 
 <!-- INTRODUCCIÓN -->
-<section class="panel on" id="intro" role="tabpanel">
-  <div class="ph"><h2>Introducción</h2></div>
+<section class="panel on" id="intro" role="tabpanel" data-dt="ed">
+  <div class="ph"><h2>Introducción</h2><ol class="dt" aria-label="Fases de Design Thinking"><li class="dt-e on" aria-current="step">Empatizar</li><li class="dt-d on">Definir</li><li class="dt-i">Idear</li><li class="dt-p">Prototipar</li><li class="dt-t">Evaluar</li></ol></div>
+  <span class="dtstep">Paso 1 - Empatizar</span>
   <div class="g2">
     <div class="video" role="img" aria-label="Video: qué encontrarás en el curso"><div class="play"></div><b>Qué encontrarás en el curso</b><span>Las pestañas, cómo recorrerlas y cómo obtienes tu certificado</span></div>
     <div>
@@ -379,11 +405,18 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.02em}
     </div>
     <p class="note" style="margin:0">Episodio en grabación. Muy pronto podrás escucharlo aquí.</p>
   </div>
+  <div class="card define" data-dt="d">
+    <span class="dtstep">Paso 2 - Definir</span>
+    <h3 style="font-size:20px;margin:4px 0 6px">Define el reto de tu aula</h3>
+    <p class="small" style="margin-top:0">Piensa en un momento real de tu clase de programación. Escríbelo en una frase. Volverás a ella en la Evaluación.</p>
+    <label class="small muted" for="reto">¿Cómo podría yo… para que mis estudiantes…?</label>
+    <textarea id="reto" placeholder="¿Cómo podría yo guiar con preguntas, sin darles la respuesta, para que mis estudiantes resuelvan solos un error en su ciclo?"></textarea>
+  </div>
 </section>
 
 <!-- CONCEPTOS -->
-<section class="panel" id="conc" role="tabpanel">
-  <div class="ph"><h2>Conceptos</h2><span class="muted small">Recórrelas en el orden que prefieras</span></div>
+<section class="panel" id="conc" role="tabpanel" data-dt="i">
+  <div class="ph"><h2>Conceptos</h2><span class="muted small">Recórrelas en el orden que prefieras</span><ol class="dt" aria-label="Fases de Design Thinking"><li class="dt-e">Empatizar</li><li class="dt-d">Definir</li><li class="dt-i on" aria-current="step">Idear</li><li class="dt-p">Prototipar</li><li class="dt-t">Evaluar</li></ol></div>
   <div class="units" role="group" aria-label="Unidades">
     <button class="unit" aria-pressed="false" data-u="u1"><small>Unidad 1</small><b>Variables</b></button>
     <button class="unit" aria-pressed="false" data-u="u2"><small>Unidad 2</small><b>Condicionales</b></button>
@@ -556,8 +589,8 @@ total = <span class="n">0</span>
 </section>
 
 <!-- GUÍA DOCENTE -->
-<section class="panel" id="guia" role="tabpanel">
-  <div class="ph"><h2>Guía docente</h2></div>
+<section class="panel" id="guia" role="tabpanel" data-dt="p">
+  <div class="ph"><h2>Guía docente</h2><ol class="dt" aria-label="Fases de Design Thinking"><li class="dt-e">Empatizar</li><li class="dt-d">Definir</li><li class="dt-i">Idear</li><li class="dt-p on" aria-current="step">Prototipar</li><li class="dt-t">Evaluar</li></ol></div>
   <p class="lead">Cada sesión del curso del estudiante tiene su guía docente, con la clase paso a paso y la solución de los retos. Ejemplo: guía de la sesión 1 de Python.</p>
   <div class="guide">
     <nav aria-label="Secciones de la guía">
@@ -599,8 +632,8 @@ total = <span class="n">0</span>
 </section>
 
 <!-- TUTOR KAY -->
-<section class="panel" id="kay" role="tabpanel">
-  <div class="ph"><h2>Tutor Kay</h2></div>
+<section class="panel" id="kay" role="tabpanel" data-dt="p">
+  <div class="ph"><h2>Tutor Kay</h2><ol class="dt" aria-label="Fases de Design Thinking"><li class="dt-e">Empatizar</li><li class="dt-d">Definir</li><li class="dt-i">Idear</li><li class="dt-p on" aria-current="step">Prototipar</li><li class="dt-t">Evaluar</li></ol></div>
   <p class="lead">Tutor Kay ya está dentro de la plataforma Arukay. Aquí aprendes a usarlo para preparar tus clases: mira el video, recorre la infografía y descarga la guía.</p>
   <div class="g2">
     <div>
@@ -629,9 +662,9 @@ total = <span class="n">0</span>
 </section>
 
 <!-- PROYECTO STEAM -->
-<section class="panel" id="steam" role="tabpanel">
-  <div class="ph"><h2>Proyecto STEAM</h2></div>
-  <p class="lead">Tus estudiantes ya resolvieron estos retos en el curso. Aquí aprendes a convertir uno de ellos en un proyecto para tu aula, agregándole algo nuevo.</p>
+<section class="panel" id="steam" role="tabpanel" data-dt="p">
+  <div class="ph"><h2>Proyecto STEAM</h2><ol class="dt" aria-label="Fases de Design Thinking"><li class="dt-e">Empatizar</li><li class="dt-d">Definir</li><li class="dt-i">Idear</li><li class="dt-p on" aria-current="step">Prototipar</li><li class="dt-t">Evaluar</li></ol></div>
+  <p class="lead">Tus estudiantes ya resolvieron estos retos en el curso. Aquí aprendes a convertir uno de ellos en un proyecto para tu aula, siguiendo las mismas fases de Design Thinking que ellos.</p>
   <div class="switchrow" role="tablist" aria-label="Retos del curso del estudiante">
     <button class="btn" type="button" data-s="s10" aria-pressed="true">Reto de la sesión 10</button>
     <button class="btn ghost" type="button" data-s="s15" aria-pressed="false">Reto de la sesión 15</button>
@@ -706,11 +739,12 @@ formatted_name = full_name.replace(<span class="s">" "</span>, <span class="s">"
     <a class="btn ghost" href="https://angielopez437-cyber.github.io/arukay-proyecto-steam/" target="_blank" rel="noopener">Ver un proyecto físico completo</a>
   </div>
   <h3 style="font-size:22px;margin:26px 0 12px">Cómo lo llevas a tu aula</h3>
-  <div class="flow">
-    <div class="card top-cy"><div class="num" style="background:var(--cy)">1</div><b>Parte de un reto</b><span class="small muted">Elige el reto de la sesión 10 o de la sesión 15.</span></div>
-    <div class="card top-bl"><div class="num" style="background:var(--bl)">2</div><b>Agrega algo nuevo</b><span class="small muted">Un dato real del colegio y una versión física, con cartón o con un kit económico.</span></div>
-    <div class="card top-co"><div class="num" style="background:var(--co)">3</div><b>Planéalo con Tutor Kay</b><span class="small muted">Pídele el plan de clases, los materiales y las preguntas para guiar.</span></div>
-    <div class="card top-gr"><div class="num" style="background:var(--gr)">4</div><b>Desarróllalo en clase</b><span class="small muted">A tu ritmo y con tus estudiantes.</span></div>
+  <div class="flow5">
+    <div class="card top-x" data-dt="e"><span class="dtstep">Paso 1 - Empatizar</span><b style="display:block">Observa a tus estudiantes</b><span class="small muted">Qué les interesa y qué problema del colegio los mueve.</span></div>
+    <div class="card top-x" data-dt="d"><span class="dtstep">Paso 2 - Definir</span><b style="display:block">Elige el reto</b><span class="small muted">El de la sesión 10 o el de la 15, y el problema real que resolverá.</span></div>
+    <div class="card top-x" data-dt="i"><span class="dtstep">Paso 3 - Idear</span><b style="display:block">Agrega algo nuevo</b><span class="small muted">Un dato real del colegio y una versión física, con cartón o con un kit.</span></div>
+    <div class="card top-x" data-dt="p"><span class="dtstep">Paso 4 - Prototipar</span><b style="display:block">Planéalo y constrúyelo</b><span class="small muted">Pídele a Tutor Kay el plan de clases y desarróllalo con tus estudiantes.</span></div>
+    <div class="card top-x" data-dt="t"><span class="dtstep">Paso 5 - Evaluar</span><b style="display:block">Preséntenlo y mejórenlo</b><span class="small muted">Cada equipo muestra su proyecto, recibe comentarios y lo ajusta.</span></div>
   </div>
   <div class="card" style="background:var(--grl);border-color:var(--grb);margin-top:18px">
     <h3 style="font-size:20px;margin-bottom:8px">No entregas evidencia</h3>
@@ -719,8 +753,9 @@ formatted_name = full_name.replace(<span class="s">" "</span>, <span class="s">"
 </section>
 
 <!-- EVALUACIÓN -->
-<section class="panel" id="eval" role="tabpanel">
-  <div class="ph"><h2>Evaluación</h2></div>
+<section class="panel" id="eval" role="tabpanel" data-dt="t">
+  <div class="ph"><h2>Evaluación</h2><ol class="dt" aria-label="Fases de Design Thinking"><li class="dt-e">Empatizar</li><li class="dt-d">Definir</li><li class="dt-i">Idear</li><li class="dt-p">Prototipar</li><li class="dt-t on" aria-current="step">Evaluar</li></ol></div>
+  <div class="card myreto hide" id="myreto"><span class="dtstep">Paso 5 - Evaluar</span><h3 style="font-size:20px;margin:4px 0 0">Vuelve a tu reto</h3><blockquote id="myretotxt"></blockquote><p class="small" style="margin:0">Después de este curso, ¿cómo lo resolverías? Tenlo presente al responder.</p></div>
   <div class="card" id="quiz">
     <div class="qhead"><span class="muted small" id="qcount">Pregunta 1 de 7</span><div class="dots" id="qdots"></div></div>
     <div id="qbox"></div>
@@ -736,8 +771,8 @@ formatted_name = full_name.replace(<span class="s">" "</span>, <span class="s">"
 </section>
 
 <!-- CERTIFICACIÓN -->
-<section class="panel" id="cert" role="tabpanel">
-  <div class="ph"><h2>Certificación</h2><span class="pill gr">al terminar</span></div>
+<section class="panel" id="cert" role="tabpanel" data-dt="t">
+  <div class="ph"><h2>Certificación</h2><span class="pill gr">al terminar</span><ol class="dt" aria-label="Fases de Design Thinking"><li class="dt-e">Empatizar</li><li class="dt-d">Definir</li><li class="dt-i">Idear</li><li class="dt-p">Prototipar</li><li class="dt-t on" aria-current="step">Evaluar</li></ol></div>
   <div class="card lock" id="locked">
     <div>
       <h3 style="font-size:20px">Tu certificado se activa al terminar el curso</h3>
@@ -778,6 +813,13 @@ formatted_name = full_name.replace(<span class="s">" "</span>, <span class="s">"
     visited.add(p); prog(); window.scrollTo({top:0});
   }
   $$('.tab').forEach(t=>t.addEventListener('click',()=>show(t.dataset.p)));
+
+  // Design Thinking: Definir in Introducción, revisited in Evaluación
+  const reto=$('#reto');
+  try{ reto.value=localStorage.getItem('arukay-reto')||''; }catch(e){}
+  reto.addEventListener('input',()=>{ try{ localStorage.setItem('arukay-reto',reto.value); }catch(e){} });
+  function showReto(){ const v=reto.value.trim(); $('#myreto').classList.toggle('hide',!v); $('#myretotxt').textContent=v; }
+  $$('.tab').forEach(t=>t.addEventListener('click',()=>{ if(t.dataset.p==='eval') showReto(); }));
 
   // units
   const unames={u1:'Unidad 1: Variables',u2:'Unidad 2: Condicionales',u4:'Unidad 4: Bibliotecas'};
