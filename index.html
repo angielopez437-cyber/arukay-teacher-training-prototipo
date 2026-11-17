@@ -420,6 +420,19 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.02em}
 .cdots button.at{box-shadow:0 0 0 3px var(--paper),0 0 0 5px var(--nv)}
 #carprev:disabled{background:var(--bg);color:var(--mu);border-color:var(--ln);cursor:not-allowed}
 .car-end{text-align:center;background:var(--paper);border:1px solid var(--ln);border-radius:var(--r);padding:20px}
+
+/* internal flashcard panel */
+.fcpanel{max-width:760px;margin:16px auto 0;background:var(--paper);border:1px solid var(--ln);border-radius:var(--r);padding:20px}
+.fcpanel[hidden]{display:none}
+.fcpanel h4{color:var(--nv);font-size:18px}
+.fcrows{display:grid;gap:10px}
+.fcrow{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr) 120px;gap:12px;align-items:center;font-size:14px}
+.fcrow .bar{height:12px;background:var(--bg);border-radius:6px;overflow:hidden}
+.fcrow .bar i{display:block;height:100%;width:100%;background:var(--am);border-radius:6px;transform-origin:left;transition:transform .3s ease}
+.fcrow .v{text-align:right;color:var(--ik)}
+.fcrow .v b{color:var(--nv)}
+.fcrow.you .t:after{content:" (incluye tu respuesta)";color:var(--mu)}
+@media (max-width:700px){.fcrow{grid-template-columns:minmax(0,1fr)}.fcrow .v{text-align:left}}
 </style>
 <script>document.documentElement.classList.add('js')</script>
 </head>
@@ -615,6 +628,14 @@ print(i)</code><em>Clic para voltear</em></div><div class="b"><b>Falta la sangr�
             <div class="car-self" id="carself" hidden><b>¿Lo sabías?</b><button type="button" class="yes" data-k="1">Sí, lo sabía</button><button type="button" class="no" data-k="0">Todavía no</button></div>
             <div class="car-nav"><button class="btn ghost" id="carprev" type="button">Anterior</button><div class="cdots" id="cdots"></div><button class="btn" id="carnext" type="button">Siguiente</button></div>
             <div class="car-end" id="carend" hidden><h4 id="carres"></h4><p class="small muted" id="carmsg" style="margin:4px 0 12px"></p><button class="btn" id="carrev" type="button">Repasar las que marcaste</button> <button class="btn ghost" id="carre" type="button">Empezar de nuevo</button></div>
+
+          <label class="switch"><input type="checkbox" id="fcint"> Mostrar el panel interno de tarjetas (solo equipo Arukay; el docente no lo ve)</label>
+          <div class="fcpanel" id="fcpanel" hidden>
+            <h4>Tarjetas con más "Todavía no"</h4>
+            <p class="small muted" style="margin:4px 0 14px">Datos de ejemplo: 40 docentes simulados. Tus respuestas en el carrusel se suman en vivo como un docente más. En la plataforma real, estos totales saldrían del registro de cada respuesta.</p>
+            <div class="fcrows" id="fcrows"></div>
+            <p class="small" id="fctot" style="margin:12px 0 0"></p>
+          </div>
           </div>
         </div>
 
@@ -1047,6 +1068,7 @@ formatted_name = full_name.replace(<span class="s">" "</span>, <span class="s">"
     $$('#carself button').forEach(b=>b.setAttribute('aria-pressed',(i in known)&&String(+known[i])===b.dataset.k));
     $('#carprev').disabled=at===0;
     $('#carnext').textContent=at===deck.length-1?'Ver resultado':'Siguiente';
+    if(typeof drawPanel==='function') drawPanel();
   }
   FC.forEach(c=>c.addEventListener('click',()=>{c.setAttribute('aria-pressed',c.getAttribute('aria-pressed')!=='true');carDraw()}));
   $$('#carself button').forEach(b=>b.addEventListener('click',()=>{known[deck[at]]=b.dataset.k==='1';carDraw()}));
@@ -1067,6 +1089,17 @@ formatted_name = full_name.replace(<span class="s">" "</span>, <span class="s">"
     if(e.key==='ArrowRight'&&at<deck.length-1){at++;carDraw()}
     if(e.key==='ArrowLeft'&&at>0){at--;carDraw()}
   });
+
+  // internal panel: example base of 40 simulated teachers + the visitor's live answers
+  const FCN=['¿Qué es un ciclo? (definición)','Ciclo (término)','Predecir: range(3) con i * 2','Completar: for i in ____(5)','Encontrar el error: falta la sangría'];
+  const FCB=[4,6,17,9,12], FCT=40;
+  function drawPanel(){
+    const answered=Object.keys(known).length>0, total=FCT+(answered?1:0);
+    const rows=FCN.map((n,k)=>({n,k,c:FCB[k]+(known[k]===false?1:0),you:known[k]===false})).sort((a,b)=>b.c-a.c);
+    $('#fcrows').innerHTML=rows.map(r=>{const pc=Math.round(r.c*100/total);return '<div class="fcrow'+(r.you?' you':'')+'"><span class="t">'+r.n+'</span><span class="bar" aria-hidden="true"><i style="transform:scaleX('+(r.c/total)+')"></i></span><span class="v"><b>'+r.c+'</b> de '+total+' ('+pc+' %)</span></div>'}).join('');
+    $('#fctot').textContent='Para reforzar primero: "'+rows[0].n+'". Base: '+total+' docentes'+(answered?', contándote a ti.':'.');
+  }
+  $('#fcint').addEventListener('change',e=>{$('#fcpanel').hidden=!e.target.checked; drawPanel();});
   carDraw();
 
   // worked example
