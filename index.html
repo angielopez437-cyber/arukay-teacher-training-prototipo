@@ -9,8 +9,8 @@
 /* Hallmark · waive 7b: the Arukay platform and deck use pure white cards on navy; kept for brand continuity *//* critique: one course, seven tabs, each tab one job; the unit is the proof, the rest stays short */
 /* waive 12, 44b: app screen, no marketing hero | waive 58: a unit screen carries course content by design */
 :root{
-  --nv:#0F1729; --nv2:#2A4C83; --bl:#3763A9; --cy:#00A8E0; --co:#E9572B; --gr:#4DB922; --am:#FF8A00;
-  --paper:#FFFFFF; --bg:#F3F4F6; --ln:#E5E7EB; --mu:#6B7280; --ik:#181F2F;
+  --nv:#0D1B33; --nvt:#16294D; --nv2:#2A4C83; --bl:#3763A9; --cy:#00A8E0; --co:#E9572B; --gr:#4DB922; --am:#FF8A00;
+  --paper:#FFFFFF; --bg:#F1F5FB; --ln:#DCE5F1; --mu:#6B7280; --ik:#181F2F;
   --cyl:#E3F5FC; --bll:#E8EEF8; --col:#FDECE7; --grl:#EAF8E6; --aml:#FFF4DE;
   --code:#1D2330; --codet:#D6E4FF;
   --fd:ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; --fb:ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; --fm:"Courier New", monospace;
@@ -350,6 +350,48 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.02em}
 .myreto blockquote{margin:8px 0;padding:10px 14px;background:var(--paper);border-left:5px solid var(--dt-t);border-radius:10px;color:var(--ik)}
 .flow5{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:14px}
 @media (max-width:1000px){.flow5{grid-template-columns:repeat(2,minmax(0,1fr))}.dt{margin-left:0}}
+
+/* Deck look (plataforma.png): dark navy bars, light blue page, white cards with light blue borders; Design Thinking colours unchanged */
+.top{background:var(--nv);color:var(--paper);box-shadow:none}
+.top img{filter:brightness(0) invert(1)}
+.course{background:var(--paper)}
+.course b{background:none;-webkit-background-clip:border-box;background-clip:border-box;color:var(--nv)}
+.prog .bar{background:var(--nvt)}
+.tabs{background:var(--nvt)}
+.tab{color:var(--xc7d3e8)}
+.tab[aria-selected="true"]{color:var(--paper);border-bottom-color:var(--cy)}
+.tab.done b:after{color:var(--grt)}
+.btn{background:var(--bl);box-shadow:none}
+.btn:hover{background:var(--nv);box-shadow:none}
+.card,.unit{box-shadow:none;border-color:var(--ln)}
+.unit[aria-pressed="true"]{background:var(--nv);border-color:var(--nv)}
+.mission{background:var(--nv)}
+.mission p{color:var(--xc7d3e8)}
+
+/* infographic, more interactive */
+.vars{display:flex;gap:8px;align-items:center;margin-top:10px;font-size:14px}
+.vars output{font-family:var(--fm);background:var(--nv);color:var(--paper);border-radius:8px;padding:4px 10px;min-width:64px;text-align:center}
+.msgrow{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:10px;font-size:14px}
+.msgrow input{border:1.5px solid var(--ln);border-radius:10px;padding:6px 10px;font:inherit;width:150px;color:var(--ik)}
+:root{--hlc:#2E4A7A}
+.code .hl{background:var(--hlc);border-radius:4px;box-shadow:0 0 0 3px var(--hlc)}
+.screen .bad{color:var(--cot);opacity:1}
+.errtoggle{margin-top:10px}
+
+/* mind map with + expansion */
+.nodew{display:grid;gap:6px}
+.nodew .row{display:flex;gap:6px;align-items:stretch}
+.nodew .node{flex:1}
+.plus{flex:none;width:40px;border:2px solid var(--ln);border-radius:14px;background:var(--paper);color:var(--nv);font-size:22px;font-weight:700;line-height:1;transition:background-color .15s ease,color .15s ease}
+.plus:hover{background:var(--bll)}
+.plus[aria-expanded="true"]{background:var(--nv);border-color:var(--nv);color:var(--paper)}
+.subs{list-style:none;margin:0;padding:0 0 0 10px;display:grid;gap:6px;border-left:3px solid var(--ln)}
+.subs li{background:var(--bg);border-radius:10px;padding:6px 10px;font-size:14px;text-align:left}
+.more{grid-column:1/-1;display:flex;gap:10px;flex-wrap:wrap;align-items:center;border-top:1px dashed var(--ln);padding-top:16px}
+.more .node{flex:0 1 200px;border-style:dashed}
+.addc{border:2px dashed var(--bl);border-radius:14px;background:var(--paper);color:var(--bl);font-weight:700;padding:10px 16px;transition:background-color .15s ease}
+.addc:hover{background:var(--bll)}
+.addc:disabled{border-color:var(--ln);color:var(--mu);cursor:default;background:var(--paper)}
 </style>
 <script>document.documentElement.classList.add('js')</script>
 </head>
@@ -454,7 +496,7 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.02em}
 
         <div class="rv" id="r-info">
           <h3>Infografía: ciclos for en Python</h3>
-          <p class="lead">Haz clic en cada número para ver qué imprime el ciclo en esa vuelta.</p>
+          <p class="lead">Mueve las vueltas, cambia el mensaje, haz clic en cada número y prueba el error típico.</p>
           <div class="info">
             <div class="hd"><h4>Ciclos for en Python</h4><span>Repetir sin reescribir</span></div>
             <div class="bd">
@@ -463,10 +505,12 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.02em}
                 <p class="small" style="margin:0">Un ciclo repite un bloque de instrucciones las veces que indiques.</p>
                 <div class="boxes" id="boxes"></div>
                 <div class="ctl"><label for="nrange">Vueltas: <b id="nval">5</b></label><input id="nrange" type="range" min="1" max="8" value="5"><button class="btn ghost" id="playall" type="button">Ver todas las vueltas</button></div>
+                <div class="vars">Valor de i en esta vuelta: <output id="ival">sin empezar</output></div>
               </div>
               <div class="blk n2">
                 <h5><i>2</i>Cómo se escribe</h5>
                 <pre class="code" id="infocode"></pre>
+                <div class="msgrow"><label for="msg">Cambia el mensaje:</label><input id="msg" type="text" value="Hola" maxlength="16"></div>
                 <p class="small muted" style="margin:8px 0 0"><b>i</b> cambia en cada vuelta. Los dos puntos y la sangría marcan lo que se repite.</p>
               </div>
               <div class="blk n3">
@@ -477,6 +521,7 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.02em}
                 <h5><i>4</i>Error típico del estudiante</h5>
                 <p class="small" style="margin:0 0 6px"><b>Cree que range(5) llega a 5.</b> Pregúntale cuál es el primer número que imprime.</p>
                 <p class="small" style="margin:0"><b>Olvida la sangría.</b> Python responde IndentationError: muéstrale qué quedó dentro del ciclo.</p>
+                <button class="btn ghost errtoggle" id="errbtn" type="button" aria-pressed="false">Quitar la sangría y ver qué pasa</button>
               </div>
               <div class="ask">
                 <b>Pregunta para tu clase:</b> ¿cuántas veces se imprime "Hola" con range(2, 6)?
@@ -489,20 +534,39 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.02em}
 
         <div class="rv" id="r-mapa">
           <h3>Mapa mental: lo que se conecta con el ciclo for</h3>
-          <p class="lead">Haz clic en cada idea para ver su definición y las palabras clave.</p>
+          <p class="lead">Haz clic en cada idea para ver su definición. Con + ves ejemplos, y con "Conectar otro concepto" sumas ideas que se relacionan con el ciclo.</p>
           <div class="map" id="map">
             <div class="col">
-              <button class="node c" aria-expanded="false" data-m="0"><b>Para qué</b><small>Repetir sin reescribir</small></button>
-              <button class="node" aria-expanded="false" data-m="1"><b>range(n)</b><small>De 0 hasta n − 1</small></button>
-              <button class="node" aria-expanded="false" data-m="2"><b>range(a, b)</b><small>De a hasta b − 1</small></button>
+              <div class="nodew">
+                <div class="row"><button class="node c" aria-expanded="false" data-m="0"><b>Para qué</b><small>Repetir sin reescribir</small></button><button class="plus" type="button" aria-expanded="false" aria-controls="sub0" aria-label="Ver más sobre esta idea">+</button></div>
+                <ul class="subs" id="sub0" hidden></ul>
+              </div>
+              <div class="nodew">
+                <div class="row"><button class="node" aria-expanded="false" data-m="1"><b>range(n)</b><small>De 0 hasta n − 1</small></button><button class="plus" type="button" aria-expanded="false" aria-controls="sub1" aria-label="Ver más sobre esta idea">+</button></div>
+                <ul class="subs" id="sub1" hidden></ul>
+              </div>
+              <div class="nodew">
+                <div class="row"><button class="node" aria-expanded="false" data-m="2"><b>range(a, b)</b><small>De a hasta b − 1</small></button><button class="plus" type="button" aria-expanded="false" aria-controls="sub2" aria-label="Ver más sobre esta idea">+</button></div>
+                <ul class="subs" id="sub2" hidden></ul>
+              </div>
             </div>
             <div class="center">Ciclo for</div>
             <div class="col">
-              <button class="node g" aria-expanded="false" data-m="3"><b>Variable i</b><small>Cambia en cada vuelta</small></button>
-              <button class="node a" aria-expanded="false" data-m="4"><b>Sangría</b><small>Marca lo que se repite</small></button>
-              <button class="node r" aria-expanded="false" data-m="5"><b>Errores típicos</b><small>Contar hasta n, olvidar la sangría</small></button>
+              <div class="nodew">
+                <div class="row"><button class="node g" aria-expanded="false" data-m="3"><b>Variable i</b><small>Cambia en cada vuelta</small></button><button class="plus" type="button" aria-expanded="false" aria-controls="sub3" aria-label="Ver más sobre esta idea">+</button></div>
+                <ul class="subs" id="sub3" hidden></ul>
+              </div>
+              <div class="nodew">
+                <div class="row"><button class="node a" aria-expanded="false" data-m="4"><b>Sangría</b><small>Marca lo que se repite</small></button><button class="plus" type="button" aria-expanded="false" aria-controls="sub4" aria-label="Ver más sobre esta idea">+</button></div>
+                <ul class="subs" id="sub4" hidden></ul>
+              </div>
+              <div class="nodew">
+                <div class="row"><button class="node r" aria-expanded="false" data-m="5"><b>Errores típicos</b><small>Contar hasta n, olvidar la sangría</small></button><button class="plus" type="button" aria-expanded="false" aria-controls="sub5" aria-label="Ver más sobre esta idea">+</button></div>
+                <ul class="subs" id="sub5" hidden></ul>
+              </div>
             </div>
             <div class="detail" id="mdet" aria-live="polite"><p class="muted" style="margin:0">Elige una idea del mapa.</p></div>
+            <div class="more" id="more"><button class="addc" id="addc" type="button">+ Conectar otro concepto</button></div>
           </div>
         </div>
 
@@ -838,24 +902,48 @@ formatted_name = full_name.replace(<span class="s">" "</span>, <span class="s">"
   $('.res button').classList.add('seen');
 
   // infographic
-  let n=5;
+  let n=5, cur=-1, noIndent=false;
+  const esc2=t=>t.replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+  function msg(){ return ($('#msg').value||'').trim()||'Hola'; }
+  function codeHTML(){
+    const l1='<span class="k">for</span> i <span class="k">in</span> range(<span class="n">'+n+'</span>):';
+    const l2=(noIndent?'':'    ')+'<span class="k">print</span>(<span class="s">"'+esc2(msg())+'"</span>, i)';
+    return '<span id="cl1">'+l1+'</span>\n<span id="cl2">'+l2+'</span>';
+  }
   function drawInfo(){
     $('#nval').textContent=n;
     $('#boxes').innerHTML=Array.from({length:n},(_,i)=>'<button type="button" data-i="'+i+'" aria-label="Vuelta con i igual a '+i+'">'+i+'</button>').join('');
-    $('#screen').innerHTML=Array.from({length:n},(_,i)=>'<div data-i="'+i+'">Hola '+i+'</div>').join('');
-    $('#infocode').innerHTML='<span class="k">for</span> i <span class="k">in</span> range(<span class="n">'+n+'</span>):\n    <span class="k">print</span>(<span class="s">"Hola"</span>, i)';
+    $('#infocode').innerHTML=codeHTML();
+    if(noIndent){
+      $('#screen').innerHTML='<div class="bad">  File "main.py", line 2<br>IndentationError: expected an indented block</div>';
+    } else {
+      $('#screen').innerHTML=Array.from({length:n},(_,i)=>'<div data-i="'+i+'">'+esc2(msg())+' '+i+'</div>').join('');
+    }
+    $('#ival').textContent='sin empezar'; cur=-1;
     $$('#boxes button').forEach(b=>b.addEventListener('click',()=>lit(+b.dataset.i)));
   }
   function lit(i){
+    if(noIndent) return;
+    cur=i;
     $$('#boxes button').forEach(b=>b.classList.toggle('lit',+b.dataset.i===i));
-    $$('#screen div').forEach(d=>{if(+d.dataset.i<=i)d.classList.add('show')});
+    $$('#screen div').forEach(d=>d.classList.toggle('show',+d.dataset.i<=i));
+    $('#ival').textContent='i = '+i;
+    const l2=$('#cl2'); if(l2){ l2.classList.add('hl'); }
   }
   let timer;
   $('#playall').addEventListener('click',()=>{
-    clearInterval(timer); $$('#screen div').forEach(d=>d.classList.remove('show'));
-    let i=0; lit(0); timer=setInterval(()=>{i++; if(i>=n){clearInterval(timer);return} lit(i)},600);
+    clearInterval(timer); if(noIndent) return;
+    $$('#screen div').forEach(d=>d.classList.remove('show'));
+    let i=0; lit(0); timer=setInterval(()=>{i++; if(i>=n){clearInterval(timer);return} lit(i)},700);
   });
   $('#nrange').addEventListener('input',e=>{n=+e.target.value;clearInterval(timer);drawInfo()});
+  $('#msg').addEventListener('input',()=>{clearInterval(timer);drawInfo()});
+  $('#errbtn').addEventListener('click',e=>{
+    noIndent=!noIndent; clearInterval(timer);
+    e.currentTarget.setAttribute('aria-pressed',noIndent);
+    e.currentTarget.textContent=noIndent?'Corregir la sangría':'Quitar la sangría y ver qué pasa';
+    drawInfo();
+  });
   drawInfo();
   $$('#askopts button').forEach(b=>b.addEventListener('click',()=>{
     $$('#askopts button').forEach(x=>x.className='');
@@ -872,6 +960,36 @@ formatted_name = full_name.replace(<span class="s">" "</span>, <span class="s">"
     ['Sangría','Los espacios al inicio de la línea indican qué instrucciones están dentro del ciclo.',['4 espacios','dos puntos','bloque']],
     ['Errores típicos','Pensar que range(5) llega a 5, u olvidar la sangría y recibir IndentationError.',['contar hasta n','IndentationError','print fuera del ciclo']]
   ];
+  const SUB=[
+    ['Imprimir una lista de nombres','Generar 20 etiquetas','Sumar los precios de una tienda'],
+    ['range(3) da 0, 1 y 2','range(1) da solo 0','range(0) no repite nada'],
+    ['range(1, 4) da 1, 2 y 3','range(5, 5) no repite nada','range(0, 10, 2) da los pares'],
+    ['Puede llamarse n o vuelta','Sirve para numerar: i + 1','Se usa en cálculos: i * 2'],
+    ['Se usan 4 espacios','Todo lo que tiene sangría se repite','Lo que no tiene sangría corre una vez, al final'],
+    ['range(5) no incluye el 5','IndentationError por la sangría','print fuera del ciclo: imprime solo una vez']
+  ];
+  const MORE=[
+    ['Listas','for p in precios recorre cada elemento de la lista, sin usar range.',['elemento','recorrer','for p in lista']],
+    ['Acumulador','total = total + p suma en cada vuelta. total empieza en 0 antes del ciclo.',['total = 0','sumar','fuera del ciclo']],
+    ['Ciclo while','Repite mientras una condición sea verdadera. Útil cuando no sabes cuántas vueltas habrá.',['condición','mientras','vueltas desconocidas']],
+    ['break','Detiene el ciclo antes de tiempo, como en el reto de la sesión 15 al ingresar un número negativo.',['salir','sesión 15','if + break']]
+  ];
+  function showDet(m){ $('#mdet').innerHTML='<h5>'+m[0]+'</h5><p style="margin:0">'+m[1]+'</p><div class="kw">'+m[2].map(k=>'<span>'+k+'</span>').join('')+'</div>'; }
+  $$('.plus').forEach(p=>p.addEventListener('click',()=>{
+    const ul=document.getElementById(p.getAttribute('aria-controls')); const i=+ul.id.slice(3);
+    const open=p.getAttribute('aria-expanded')==='true';
+    if(!ul.children.length) ul.innerHTML=SUB[i].map(t=>'<li>'+t+'</li>').join('');
+    ul.hidden=open; p.setAttribute('aria-expanded',!open); p.textContent=open?'+':'−';
+  }));
+  let added=0;
+  $('#addc').addEventListener('click',()=>{
+    const m=MORE[added++]; const b=document.createElement('button');
+    b.className='node'; b.type='button'; b.setAttribute('aria-expanded','false');
+    b.innerHTML='<b>'+m[0]+'</b><small>Se conecta con el ciclo</small>';
+    b.addEventListener('click',()=>{ $$('.node').forEach(x=>x.setAttribute('aria-expanded','false')); b.setAttribute('aria-expanded','true'); showDet(m); });
+    $('#more').insertBefore(b,$('#addc')); b.click();
+    if(added>=MORE.length){ $('#addc').disabled=true; $('#addc').textContent='Ya conectaste todos los conceptos'; }
+  });
   $$('.node').forEach(b=>b.addEventListener('click',()=>{
     const open=b.getAttribute('aria-expanded')==='true';
     $$('.node').forEach(x=>x.setAttribute('aria-expanded','false'));
