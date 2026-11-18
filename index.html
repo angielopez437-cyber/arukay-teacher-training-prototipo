@@ -433,6 +433,18 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.02em}
 .fcrow .v b{color:var(--nv)}
 .fcrow.you .t:after{content:" (incluye tu respuesta)";color:var(--mu)}
 @media (max-width:700px){.fcrow{grid-template-columns:minmax(0,1fr)}.fcrow .v{text-align:left}}
+
+/* podcast player and synced transcript */
+.podaudio{width:100%;margin-top:4px}
+.tx{margin-top:12px}
+.tx summary{cursor:pointer;font-weight:700;color:var(--bl)}
+.tx summary:focus-visible{outline:3px solid var(--cy);outline-offset:2px}
+.txb{max-height:260px;overflow-y:auto;margin-top:10px;padding-right:6px}
+.turn{margin:0 0 10px;font-size:15px;line-height:1.6}
+.turn b{display:block;font-size:13px;color:var(--nv)}
+.ln{cursor:pointer;border-radius:4px;transition:background-color .15s ease}
+.ln:hover{background:var(--bll)}
+.ln.now{background:var(--aml)}
 </style>
 <script>document.documentElement.classList.add('js')</script>
 </head>
@@ -484,10 +496,11 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.02em}
       <div>
         <span class="pill">Antes de empezar, escucha</span>
         <h3>¿Por qué aprender a programar hoy?</h3>
-        <p class="small muted" style="margin:0">Una conversación con un docente de programación sobre un caso real de su clase.</p>
+        <p class="small muted" style="margin:0">Ana conversa con Andrés, docente de programación, sobre un caso real de su clase. 3 minutos.</p>
       </div>
     </div>
-    <p class="note" style="margin:0">Episodio en grabación. Muy pronto podrás escucharlo aquí.</p>
+    <audio class="podaudio" id="podaudio" controls preload="metadata" src="podcast.m4a"></audio>
+    <details class="tx"><summary>Leer la transcripción</summary><div class="txb" id="txb"><p class="turn"><b>Ana</b> <span class="ln" data-s="0.78" data-e="4.74">Hola, hola, bienvenidos a este podcast de Arukay.</span> <span class="ln" data-s="4.96" data-e="10.36">Hoy estoy con el profesor Andrés, que enseña programación en un colegio hace ¿cuántos años?</span></p><p class="turn"><b>Andrés</b> <span class="ln" data-s="11.48" data-e="15.76">Uy, ya casi ocho, y todavía me pasan cosas nuevas cada semana.</span></p><p class="turn"><b>Ana</b> <span class="ln" data-s="16.5" data-e="21.64">Me imagino. Bueno, te quería preguntar algo para empezar esta conversación,</span> <span class="ln" data-s="21.76" data-e="28.24">que seguramente te preguntan mucho, y es ¿para qué le sirve a un niño de colegio aprender a programar?</span></p><p class="turn"><b>Andrés</b> <span class="ln" data-s="28.24" data-e="33.92">Sí, me lo preguntan los papás, me lo preguntan los estudiantes.</span> <span class="ln" data-s="35.26" data-e="41.0">La verdad, yo tampoco lo tenía muy claro, hasta que me pasó algo con una estudiante, con Sofía.</span></p><p class="turn"><b>Ana</b> <span class="ln" data-s="42.04" data-e="43.38">A ver, ¿puedes contarnos?</span></p><p class="turn"><b>Andrés</b> <span class="ln" data-s="44.96" data-e="49.72">Estábamos preparando la feria del colegio y a ella le tocaba hacer las etiquetas de los productos,</span> <span class="ln" data-s="50.16" data-e="53.78">20 etiquetas, creo, con nombre y con precio.</span> <span class="ln" data-s="53.78" data-e="58.72">Y ahí estaba haciéndolas una por una, a mano, copiando y pegando.</span></p><p class="turn"><b>Ana</b> <span class="ln" data-s="59.48" data-e="60.62">Como haríamos todos, ¿no?</span></p><p class="turn"><b>Andrés</b> <span class="ln" data-s="62.2" data-e="69.16">Exacto. Yo también lo hubiera hecho así, pero luego le pregunté, ¿qué cambia de una etiqueta a otra?</span> <span class="ln" data-s="69.86" data-e="74.82">Y ella se quedó pensando y me dijo, pues, que solo el nombre y el precio, lo demás es igual.</span></p><p class="turn"><b>Ana</b> <span class="ln" data-s="74.82" data-e="78.72">Bueno, ahí está, ¿la programación?</span></p><p class="turn"><b>Andrés</b> <span class="ln" data-s="79.92" data-e="86.52">Ahí está, exacto. Esa misma tarde lo resolvió con un ciclo en Python, más o menos cinco líneas.</span> <span class="ln" data-s="87.2" data-e="91.36">Y lo que más me gustó no fue el programa en sí, sino la cara que puso.</span> <span class="ln" data-s="92.02" data-e="94.46">Como diciendo, uy, ¿por qué no me enseñaron esto antes?</span></p><p class="turn"><b>Ana</b> <span class="ln" data-s="94.46" data-e="99.46">Pero bueno, te hago la pregunta incómoda.</span> <span class="ln" data-s="100.12" data-e="105.76">Eso mismo hoy se lo pides a una inteligencia artificial, o sea, que te haga las etiquetas y te las hace.</span> <span class="ln" data-s="105.98" data-e="108.24">¿Sigue valiendo la pena aprender a programar?</span></p><p class="turn"><b>Andrés</b> <span class="ln" data-s="108.24" data-e="117.8">Yo creo que vale incluso más la pena, porque la inteligencia artificial te responde, pero alguien tiene que saber qué le va a pedir.</span> <span class="ln" data-s="118.4" data-e="125.8">Y saber si lo que le dio, lo que le dijo, está bien o está mal. Eso no lo hace quien solo copia y pega las respuestas.</span></p><p class="turn"><b>Ana</b> <span class="ln" data-s="126.46" data-e="133.8">O sea, que el trabajo ya pasa de escribir código a pensar de manera lógica y secuencial.</span></p><p class="turn"><b>Andrés</b> <span class="ln" data-s="133.8" data-e="138.24">Algo así. Eso es justo lo que uno quiere que los estudiantes aprendan en el aula.</span></p><p class="turn"><b>Ana</b> <span class="ln" data-s="138.8" data-e="147.04">Bueno, una última pregunta y es, para los profes que nos están escuchando y que de pronto nunca han programado, ¿qué les podrías decir?</span></p><p class="turn"><b>Andrés</b> <span class="ln" data-s="149.36" data-e="155.34">Que se equivoquen. Resuelvan el reto antes que los estudiantes. Eso es muy importante.</span> <span class="ln" data-s="155.96" data-e="160.26">Y que miren en dónde se equivocan, porque seguramente ahí se van a equivocar ellos también.</span> <span class="ln" data-s="160.26" data-e="165.78">Y de esa manera pueden saber qué preguntarles, o si funciona o si no funciona.</span></p><p class="turn"><b>Ana</b> <span class="ln" data-s="166.76" data-e="170.5">Me llevo ese dato, profesor Andrés. Gracias por estar aquí.</span></p><p class="turn"><b>Andrés</b> <span class="ln" data-s="171.56" data-e="172.62">Gracias a ti, Ana.</span></p><p class="turn"><b>Ana</b> <span class="ln" data-s="173.6" data-e="179.52">Bueno, y a ustedes, profesores, bienvenidos al Teacher Training de Python en VS Code.</span> <span class="ln" data-s="180.38" data-e="181.74">Nos escuchamos en la próxima.</span></p></div></details>
   </div>
   <div class="card define" data-dt="d">
     <span class="dtstep">Paso 2 - Definir</span>
@@ -1054,6 +1067,13 @@ formatted_name = full_name.replace(<span class="s">" "</span>, <span class="s">"
   }));
 
   // flashcards
+
+  // podcast: synced transcript
+  const au=$('#podaudio'), LN=$$('#txb .ln');
+  if(au){
+    au.addEventListener('timeupdate',()=>{const t=au.currentTime; LN.forEach(l=>l.classList.toggle('now',t>=+l.dataset.s&&t<+l.dataset.e));});
+    LN.forEach(l=>l.addEventListener('click',()=>{au.currentTime=+l.dataset.s; au.play();}));
+  }
   // flashcard carousel
   const FC=$$('.car-stage .fc'); let deck=FC.map((_,i)=>i), at=0; const known={};
   function carDraw(){
